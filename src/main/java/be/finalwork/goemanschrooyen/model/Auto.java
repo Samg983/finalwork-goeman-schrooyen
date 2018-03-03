@@ -47,6 +47,14 @@ public class Auto {
         this.kmStand = kmStand;
     }
 
+    public Auto(int autoId, Double snelheid, Boolean schermAan, Double kmStand) {
+        this.autoId = autoId;
+        this.snelheid = snelheid;
+        this.schermAan = schermAan;
+        this.kmStand = kmStand;
+    }
+
+    
 	// Default constructor is nodig voor automatische omzetting van JSON naar
 	// object
 	public Auto() {

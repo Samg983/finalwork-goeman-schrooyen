@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package be.finalwork.goemanschrooyen.model;
+package be.finalwork.goemanschrooyen.webservice;
 
 /**
  *
  * @author SamGoeman
  */
-public class Instelling {
-    //TODO
+public class VoorkeurController {
     
 }

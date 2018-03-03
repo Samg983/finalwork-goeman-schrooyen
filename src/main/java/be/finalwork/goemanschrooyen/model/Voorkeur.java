@@ -10,5 +10,5 @@ package be.finalwork.goemanschrooyen.model;
  * @author SamGoeman
  */
 public class Voorkeur {
-    
+    //TODO
 }

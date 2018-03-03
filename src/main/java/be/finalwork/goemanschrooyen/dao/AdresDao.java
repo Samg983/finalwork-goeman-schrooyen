@@ -3,13 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package be.finalwork.goemanschrooyen.model;
+package be.finalwork.goemanschrooyen.dao;
 
+import java.sql.*;
+import java.util.ArrayList;
+
+import be.finalwork.goemanschrooyen.model.Adres;
 /**
  *
  * @author SamGoeman
  */
-public class Instelling {
-    //TODO
-    
+public class AdresDao {
+
 }

@@ -34,6 +34,13 @@ public class AutoController {
 		// http://localhost:8080/Auto/getAll
 		return AutoDao.getAutos();
 	}
+        
+        @RequestMapping("/blink")
+	public void blink() {
+		// Aanroepen met
+		// http://localhost:8080/Auto/getAll
+		 AutoDao.blink();
+	}
 
 	@RequestMapping("/getById")
 	public Auto getById(@RequestParam(value = "autoId", defaultValue = "1") int kenmerkId) {

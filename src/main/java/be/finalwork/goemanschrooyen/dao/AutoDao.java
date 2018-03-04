@@ -81,6 +81,15 @@ public class AutoDao {
         }
         return aantalAangepasteRijen;
     }
+    
+    public static void blink(){
+        try{
+            Auto.blink();
+        } catch(InterruptedException e) {
+            
+        }
+        
+    }
 
     private static Auto converteerHuidigeRijNaarObject(ResultSet mijnResultset) throws SQLException {
         return new Auto(mijnResultset.getInt("autoId"), mijnResultset.getDouble("snelheid"), mijnResultset.getBoolean("schermAan"), mijnResultset.getDouble("kmStand"));

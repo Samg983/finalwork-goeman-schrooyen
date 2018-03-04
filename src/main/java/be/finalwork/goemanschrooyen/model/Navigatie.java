@@ -38,7 +38,7 @@ public class Navigatie {
         this.lng = lng;
     }
 
-    public boolean isSnelwegenAan() {
+    public boolean getSnelwegenAan() {
         return snelwegenAan;
     }
 
@@ -46,7 +46,7 @@ public class Navigatie {
         this.snelwegenAan = snelwegenAan;
     }
 
-    public boolean isTolwegenAan() {
+    public boolean getTolwegenAan() {
         return tolwegenAan;
     }
 

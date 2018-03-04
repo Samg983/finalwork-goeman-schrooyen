@@ -5,10 +5,84 @@
  */
 package be.finalwork.goemanschrooyen.dao;
 
+import be.finalwork.goemanschrooyen.model.Auto;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 /**
  *
  * @author SamGoeman
  */
 public class AutoDao {
-    
+     public static ArrayList<Auto> getAutos() {
+        ArrayList<Auto> resultaat = new ArrayList<Auto>();
+        try {
+            ResultSet mijnResultset = Database.voerSqlUitEnHaalResultaatOp("SELECT * from Auto");
+            if (mijnResultset != null) {
+                while (mijnResultset.next()) {
+                    Auto huidigeAuto = converteerHuidigeRijNaarObject(mijnResultset);
+                    resultaat.add(huidigeAuto);
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            // Foutafhandeling naar keuze
+        }
+
+        return resultaat;
+    }
+
+    public static Auto getAutoById(int id) {
+        Auto resultaat = null;
+        try {
+            ResultSet mijnResultset = Database.voerSqlUitEnHaalResultaatOp("SELECT * from Auto where autoId = ?", new Object[]{id});
+            if (mijnResultset != null) {
+                mijnResultset.first();
+                resultaat = converteerHuidigeRijNaarObject(mijnResultset);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            // Foutafhandeling naar keuze
+        }
+
+        return resultaat;
+    }
+
+    public static int voegAutoToe(Auto nieuweAuto) {
+        int aantalAangepasteRijen = 0;
+        try {
+            aantalAangepasteRijen = Database.voerSqlUitEnHaalAantalAangepasteRijenOp("INSERT INTO Auto (snelheid, schermAan, kmStand) VALUES (?,?,?)", new Object[]{nieuweAuto.getSnelheid(), nieuweAuto.getSchermAan() , nieuweAuto.getKmStand()});
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            // Foutafhandeling naar keuze
+        }
+        return aantalAangepasteRijen;
+    }
+
+    public static int updateAuto(Auto nieuweAuto) {
+        int aantalAangepasteRijen = 0;
+        try {
+            aantalAangepasteRijen = Database.voerSqlUitEnHaalAantalAangepasteRijenOp("UPDATE Auto SET snelheid = ?, schermAan = ?, kmStand = ? WHERE autoId = ?", new Object[]{nieuweAuto.getSnelheid(), nieuweAuto.getSchermAan(),  nieuweAuto.getKmStand(), nieuweAuto.getAutoId()});
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            // Foutafhandeling naar keuze
+        }
+        return aantalAangepasteRijen;
+    }
+
+    public static int verwijderAuto(int AutoId) {
+        int aantalAangepasteRijen = 0;
+        try {
+            aantalAangepasteRijen = Database.voerSqlUitEnHaalAantalAangepasteRijenOp("DELETE FROM Auto WHERE autoId = ?", new Object[]{AutoId});
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            // Foutafhandeling naar keuze
+        }
+        return aantalAangepasteRijen;
+    }
+
+    private static Auto converteerHuidigeRijNaarObject(ResultSet mijnResultset) throws SQLException {
+        return new Auto(mijnResultset.getInt("autoId"), mijnResultset.getDouble("snelheid"), mijnResultset.getBoolean("schermAan"), mijnResultset.getDouble("kmStand"));
+    }
 }

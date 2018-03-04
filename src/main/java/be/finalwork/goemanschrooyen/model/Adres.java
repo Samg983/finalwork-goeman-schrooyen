@@ -30,7 +30,7 @@ public class Adres {
         this.bestemming = bestemming;
     }
 
-    public boolean isIsFavoriet() {
+    public boolean getIsFavoriet() {
         return isFavoriet;
     }
 

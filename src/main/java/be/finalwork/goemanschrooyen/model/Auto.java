@@ -10,6 +10,9 @@ import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalOutput;
 import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
+import com.pi4j.io.i2c.I2CBus;
+import com.pi4j.io.i2c.I2CDevice;
+import com.pi4j.io.i2c.I2CFactory;
 
 /**
  *
@@ -20,6 +23,9 @@ public class Auto {
 	private Double snelheid;
 	private Boolean schermAan;
         private Double kmStand;
+        
+        //private I2CBus bus = I2CFactory.getInstance(0x1);
+        //private I2CDevice devoce = bus.getDevice(0x48);
 
     public int getAutoId() {
         return autoId;
@@ -117,5 +123,21 @@ public class Auto {
         gpio.shutdown();
 
         System.out.println("Exiting ControlGpioExample");
+    }
+        
+        public void pot()  {
+ /*try 
+    {
+        devoce.write((byte) (0x40 | (sensorId & 3)));
+        devoce.read();
+        buffer = (byte) devoce.read();
+        unsignedValue = (short) ((short) 0x00FF & buffer);
+    }
+    catch (IOException e) 
+    {
+        logger.error("IOEXception " + e.getMessage() + " reading sensor " + sensorId);
+        return false;
+    }*/
+     
     }
 }

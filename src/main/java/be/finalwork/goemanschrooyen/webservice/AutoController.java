@@ -7,6 +7,10 @@ package be.finalwork.goemanschrooyen.webservice;
 
 import be.finalwork.goemanschrooyen.dao.AutoDao;
 import be.finalwork.goemanschrooyen.model.Auto;
+import com.pi4j.io.i2c.I2CBus;
+import com.pi4j.io.i2c.I2CDevice;
+import com.pi4j.io.i2c.I2CFactory;
+import com.pi4j.io.i2c.I2CFactory.UnsupportedBusNumberException;
 import java.util.ArrayList;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,6 +45,27 @@ public class AutoController {
 		// http://localhost:8080/Auto/getAll
 		 AutoDao.blink();
 	}
+        
+        @RequestMapping("/temp")
+	public void temp()
+        {
+            
+            try {
+              
+                 I2CBus i2c = I2CFactory.getInstance(I2CBus.BUS_1);
+
+       
+                   I2CDevice device = i2c.getDevice(0b1001001);
+                    System.out.print(device);
+                 //int response = device.read(TSL2561_REG_ID);
+            } catch (UnsupportedBusNumberException e) {
+                
+            }
+		
+
+	}
+        
+        
 
 	@RequestMapping("/getById")
 	public Auto getById(@RequestParam(value = "autoId", defaultValue = "1") int kenmerkId) {

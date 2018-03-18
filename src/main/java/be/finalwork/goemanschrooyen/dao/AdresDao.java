@@ -53,7 +53,7 @@ public class AdresDao {
     public static int voegAdresToe(Adres nieuweAdres) {
         int aantalAangepasteRijen = 0;
         try {
-            aantalAangepasteRijen = Database.voerSqlUitEnHaalAantalAangepasteRijenOp("INSERT INTO Adres (bestemming, isFavoriet) VALUES (?,?)", new Object[]{nieuweAdres.getBestemming(), nieuweAdres.getIsFavoriet()});
+            aantalAangepasteRijen = Database.voerSqlUitEnHaalAantalAangepasteRijenOp("INSERT INTO Adres (bestemming, isFavoriet, lat, lng) VALUES (?,?,?,?)", new Object[]{nieuweAdres.getBestemming(), nieuweAdres.getIsFavoriet(), nieuweAdres.getLat(), nieuweAdres.getLng()});
         } catch (SQLException ex) {
             ex.printStackTrace();
             // Foutafhandeling naar keuze
@@ -64,7 +64,7 @@ public class AdresDao {
     public static int updateAdres(Adres nieuweAdres) {
         int aantalAangepasteRijen = 0;
         try {
-            aantalAangepasteRijen = Database.voerSqlUitEnHaalAantalAangepasteRijenOp("UPDATE Adres SET bestemming = ?, isFavoriet = ? WHERE adresId = ?", new Object[]{nieuweAdres.getBestemming(), nieuweAdres.getIsFavoriet(), nieuweAdres.getAdresId()});
+            aantalAangepasteRijen = Database.voerSqlUitEnHaalAantalAangepasteRijenOp("UPDATE Adres SET bestemming = ?, isFavoriet = ?, lat = ?, lng = ? WHERE adresId = ?", new Object[]{nieuweAdres.getBestemming(), nieuweAdres.getIsFavoriet(), nieuweAdres.getLat(), nieuweAdres.getLng(), nieuweAdres.getAdresId()});
         } catch (SQLException ex) {
             ex.printStackTrace();
             // Foutafhandeling naar keuze
@@ -84,6 +84,6 @@ public class AdresDao {
     }
 
     private static Adres converteerHuidigeRijNaarObject(ResultSet mijnResultset) throws SQLException {
-        return new Adres(mijnResultset.getInt("adresId"), mijnResultset.getString("bestemming"), mijnResultset.getBoolean("isFavoriet"));
+        return new Adres(mijnResultset.getInt("adresId"), mijnResultset.getString("bestemming"), mijnResultset.getBoolean("isFavoriet"), mijnResultset.getDouble("lat"), mijnResultset.getDouble("lng"));
     }
 }

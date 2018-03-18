@@ -52,7 +52,7 @@ public class KlimaatDao {
     public static int voegKlimaatToe(Klimaat nieuweKlimaat) {
         int aantalAangepasteRijen = 0;
         try {
-            aantalAangepasteRijen = Database.voerSqlUitEnHaalAantalAangepasteRijenOp("INSERT INTO Klimaat (temperatuur, ruitontdooiing, ventilatieSterkte, zetelverwarming) VALUES (?,?,?,?)", new Object[]{nieuweKlimaat.getTemperatuur(), nieuweKlimaat.getRuitontdooiing(), nieuweKlimaat.getVentilatieSterkte(), nieuweKlimaat.getZetelverwarming()});
+            aantalAangepasteRijen = Database.voerSqlUitEnHaalAantalAangepasteRijenOp("INSERT INTO Klimaat (temperatuurLinks, temperatuurRechts, ruitontdooiing, ventilatieSterkteLinks, ventilatieSterkteRechts, zetelverwarmingLinks, zetelverwarmingRechts) VALUES (?,?,?,?,?,?,?)", new Object[]{nieuweKlimaat.getTemperatuurLinks(), nieuweKlimaat.getTemperatuurRechts(), nieuweKlimaat.getRuitontdooiing(), nieuweKlimaat.getVentilatieSterkteLinks(), nieuweKlimaat.getVentilatieSterkteRechts(), nieuweKlimaat.getZetelverwarmingLinks(), nieuweKlimaat.getZetelverwarmingRechts()});
         } catch (SQLException ex) {
             ex.printStackTrace();
             // Foutafhandeling naar keuze
@@ -63,7 +63,7 @@ public class KlimaatDao {
     public static int updateKlimaat(Klimaat nieuweKlimaat) {
         int aantalAangepasteRijen = 0;
         try {
-            aantalAangepasteRijen = Database.voerSqlUitEnHaalAantalAangepasteRijenOp("UPDATE Klimaat SET temperatuur = ?, ruitontdooiing = ?, ventilatieSterkte = ?, zetelverwarming = ? WHERE klimaatId = ?", new Object[]{nieuweKlimaat.getTemperatuur(), nieuweKlimaat.getRuitontdooiing(), nieuweKlimaat.getVentilatieSterkte(), nieuweKlimaat.getZetelverwarming(), nieuweKlimaat.getKlimaatId()});
+            aantalAangepasteRijen = Database.voerSqlUitEnHaalAantalAangepasteRijenOp("UPDATE Klimaat SET temperatuurLinks = ?, temperatuurRechts = ?, ruitontdooiing = ?, ventilatieSterkteLinks = ?, ventilatieSterkteRechts = ?, zetelverwarmingLinks = ?, zetelverwarmingRechts = ? WHERE klimaatId = ?", new Object[]{nieuweKlimaat.getTemperatuurLinks(), nieuweKlimaat.getTemperatuurRechts(), nieuweKlimaat.getRuitontdooiing(), nieuweKlimaat.getVentilatieSterkteLinks(), nieuweKlimaat.getVentilatieSterkteRechts(), nieuweKlimaat.getZetelverwarmingLinks(), nieuweKlimaat.getZetelverwarmingRechts(), nieuweKlimaat.getKlimaatId()});
         } catch (SQLException ex) {
             ex.printStackTrace();
             // Foutafhandeling naar keuze
@@ -83,6 +83,6 @@ public class KlimaatDao {
     }
 
     private static Klimaat converteerHuidigeRijNaarObject(ResultSet mijnResultset) throws SQLException {
-        return new Klimaat(mijnResultset.getInt("klimaatId"), mijnResultset.getDouble("temperatuur"), mijnResultset.getBoolean("ruitontdooiing"), mijnResultset.getInt("ventilatieSterkte"), mijnResultset.getInt("zetelverwarming"));
+        return new Klimaat(mijnResultset.getInt("klimaatId"), mijnResultset.getDouble("temperatuurLinks"), mijnResultset.getDouble("temperatuurRechts"), mijnResultset.getBoolean("ruitontdooiing"), mijnResultset.getInt("ventilatieSterkteLinks"), mijnResultset.getInt("ventilatieSterkteRechts"), mijnResultset.getInt("zetelverwarmingLinks"), mijnResultset.getInt("zetelverwarmingRechts"));
     }
 }

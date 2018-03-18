@@ -13,6 +13,7 @@ public class Adres {
     private int adresId;
     private String bestemming;
     private boolean isFavoriet;
+    private Double lat, lng;
 
     public int getAdresId() {
         return adresId;
@@ -38,11 +39,31 @@ public class Adres {
         this.isFavoriet = isFavoriet;
     }
 
-    public Adres(int adresId, String bestemming, boolean isFavoriet) {
+    public Double getLat() {
+        return lat;
+    }
+
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+
+    public Double getLng() {
+        return lng;
+    }
+
+    public void setLng(Double lng) {
+        this.lng = lng;
+    }
+
+    public Adres(int adresId, String bestemming, boolean isFavoriet, Double lat, Double lng) {
         this.adresId = adresId;
         this.bestemming = bestemming;
         this.isFavoriet = isFavoriet;
+        this.lat = lat;
+        this.lng = lng;
     }
+
+ 
     
     public Adres(){
         

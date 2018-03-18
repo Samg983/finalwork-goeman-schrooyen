@@ -11,9 +11,9 @@ package be.finalwork.goemanschrooyen.model;
  */
 public class Klimaat {
     private int klimaatId;
-    private double temperatuur;
-    private Boolean ruitontdooiing;
-    private int ventilatieSterkte, zetelverwarming;
+    private double temperatuurLinks, temperatuurRechts;
+    private boolean ruitontdooiing;
+    private int ventilatieSterkteLinks, ventilatieSterkteRechts, zetelverwarmingLinks, zetelverwarmingRechts;
 
     public int getKlimaatId() {
         return klimaatId;
@@ -23,45 +23,74 @@ public class Klimaat {
         this.klimaatId = klimaatId;
     }
 
-    public double getTemperatuur() {
-        return temperatuur;
+    public double getTemperatuurLinks() {
+        return temperatuurLinks;
     }
 
-    public void setTemperatuur(double temperatuur) {
-        this.temperatuur = temperatuur;
+    public void setTemperatuurLinks(double temperatuurLinks) {
+        this.temperatuurLinks = temperatuurLinks;
     }
 
-    public Boolean getRuitontdooiing() {
+    public double getTemperatuurRechts() {
+        return temperatuurRechts;
+    }
+
+    public void setTemperatuurRechts(double temperatuurRechts) {
+        this.temperatuurRechts = temperatuurRechts;
+    }
+
+    public boolean getRuitontdooiing() {
         return ruitontdooiing;
     }
 
-    public void setRuitontdooiing(Boolean ruitontdooiing) {
+    public void setRuitontdooiing(boolean ruitontdooiing) {
         this.ruitontdooiing = ruitontdooiing;
     }
 
-    public int getVentilatieSterkte() {
-        return ventilatieSterkte;
+    public int getVentilatieSterkteLinks() {
+        return ventilatieSterkteLinks;
     }
 
-    public void setVentilatieSterkte(int ventilatieSterkte) {
-        this.ventilatieSterkte = ventilatieSterkte;
+    public void setVentilatieSterkteLinks(int ventilatieSterkteLinks) {
+        this.ventilatieSterkteLinks = ventilatieSterkteLinks;
     }
 
-    public int getZetelverwarming() {
-        return zetelverwarming;
+    public int getVentilatieSterkteRechts() {
+        return ventilatieSterkteRechts;
     }
 
-    public void setZetelverwarming(int zetelverwarming) {
-        this.zetelverwarming = zetelverwarming;
+    public void setVentilatieSterkteRechts(int ventilatieSterkteRechts) {
+        this.ventilatieSterkteRechts = ventilatieSterkteRechts;
     }
 
-    public Klimaat(int klimaatId, double temperatuur, Boolean ruitontdooiing, int ventilatieSterkte, int zetelverwarming) {
+    public int getZetelverwarmingLinks() {
+        return zetelverwarmingLinks;
+    }
+
+    public void setZetelverwarmingLinks(int zetelverwarmingLinks) {
+        this.zetelverwarmingLinks = zetelverwarmingLinks;
+    }
+
+    public int getZetelverwarmingRechts() {
+        return zetelverwarmingRechts;
+    }
+
+    public void setZetelverwarmingRechts(int zetelverwarmingRechts) {
+        this.zetelverwarmingRechts = zetelverwarmingRechts;
+    }
+
+    public Klimaat(int klimaatId, double temperatuurLinks, double temperatuurRechts, Boolean ruitontdooiing, int ventilatieSterkteLinks, int ventilatieSterkteRechts, int zetelverwarmingLinks, int zetelverwarmingRechts) {
         this.klimaatId = klimaatId;
-        this.temperatuur = temperatuur;
+        this.temperatuurLinks = temperatuurLinks;
+        this.temperatuurRechts = temperatuurRechts;
         this.ruitontdooiing = ruitontdooiing;
-        this.ventilatieSterkte = ventilatieSterkte;
-        this.zetelverwarming = zetelverwarming;
+        this.ventilatieSterkteLinks = ventilatieSterkteLinks;
+        this.ventilatieSterkteRechts = ventilatieSterkteRechts;
+        this.zetelverwarmingLinks = zetelverwarmingLinks;
+        this.zetelverwarmingRechts = zetelverwarmingRechts;
     }
+
+  
     
     public Klimaat(){
         

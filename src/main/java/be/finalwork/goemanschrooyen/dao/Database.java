@@ -11,7 +11,7 @@ import javax.sql.rowset.RowSetProvider;
  * @author Maarten Heylen
  */
 public class Database {
-	private static String locatieMysqlServer = "jdbc:mysql://dt5.ehb.be:3306/1718.schrooyen.goeman";
+	private static String locatieMysqlServer = "jdbc:mysql://dt5.ehb.be:3306/1718.schrooyen.goeman?autoReconnect=true&useSSL=false";
 	private static String gebruikersnaam = "1718.schrooyen.goeman";
 	private static String wachtwoord = "FZT1Gqd";
 

@@ -60,5 +60,17 @@ public class KlimaatController {
 		
 		return KlimaatDao.voegKlimaatToe(nieuweKlimaat);
 	}
+        
+        @RequestMapping(value = "/update", method = RequestMethod.POST)
+	public int update(@RequestBody Klimaat updateKlimaat) {
+		// Aanroepen met
+		// http://localhost:8080/Klimaat/voegToe
+		// Geef parameter mee in de body: {"naam":"Smartphone","prijs":299.99}
+		// Content type van de POST request is application/json
+		// Default constructor nodig bij Klimaat-klasse voor automatische omzetting van JSON naar objecten
+		
+		
+		return KlimaatDao.updateKlimaat(updateKlimaat);
+	}
 	
 }

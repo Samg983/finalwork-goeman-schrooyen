@@ -74,9 +74,10 @@ public class AutoController {
               int i = 0;
                 do {
                     
-                    int btn = device.read(2);
-                    int x = device.read(1);
-                    int y = device.read(0b00000000);
+                    /*int btn = device.read(0b00000010);
+                    int x = device.read(0b00000001);
+                    int y = device.read(0b00000000);*/
+                    int pot = device.read(0b00000011);
                     
                     /* if (x < 10){ 
                         System.out.println("left: " + x);
@@ -92,9 +93,10 @@ public class AutoController {
                         System.out.println("Button: " + btn);
                     }*/
                     Thread.sleep(800);  
-                    System.out.println("x: " + x);
+                    /*System.out.println("x: " + x);
                     System.out.println("y: " + y);
-                    System.out.println("Btn: " + btn);
+                    System.out.println("Btn: " + btn);*/
+                    System.out.println("Pot: " + pot);
                     
                    i++; 
                 } while(i < 100);

@@ -6,9 +6,8 @@
 package be.finalwork.goemanschrooyen.webservice;
 
 import be.finalwork.goemanschrooyen.dao.AutoDao;
-import be.finalwork.goemanschrooyen.dao.KlimaatDao;
 import be.finalwork.goemanschrooyen.model.Auto;
-import be.finalwork.goemanschrooyen.model.Klimaat;
+import be.finalwork.goemanschrooyen.threads.TempThread;
 import com.pi4j.io.i2c.I2CBus;
 import com.pi4j.io.i2c.I2CDevice;
 import com.pi4j.io.i2c.I2CFactory;
@@ -93,6 +92,9 @@ public class AutoController {
                         System.out.println("Button: " + btn);
                     }*/
                     Thread.sleep(800);  
+                    Runnable r = new TempThread(pot);
+                    new Thread(r).start();
+                    
                     /*System.out.println("x: " + x);
                     System.out.println("y: " + y);
                     System.out.println("Btn: " + btn);*/

@@ -121,7 +121,7 @@ public class AutoController {
     @RequestMapping("/redirect")
     public RedirectView localRedirect() {
         RedirectView redirectView = new RedirectView();
-        redirectView.setUrl("file:///Users/SamGoeman/Documents/Multec/3e%20jaar/Final%20Work/2e%20semester/bootstrap/index.html");
+        redirectView.setUrl("http://samgoeman.com/rq/");
         return redirectView;
     }
 

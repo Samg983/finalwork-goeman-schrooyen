@@ -6,7 +6,6 @@
 package be.finalwork.goemanschrooyen.webservice;
 
 import be.finalwork.goemanschrooyen.dao.AutoDao;
-import be.finalwork.goemanschrooyen.dao.KlimaatDao;
 import be.finalwork.goemanschrooyen.model.Auto;
 import be.finalwork.goemanschrooyen.threads.TempThread;
 import com.pi4j.io.gpio.GpioController;

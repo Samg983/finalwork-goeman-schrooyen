@@ -83,10 +83,15 @@ public class AutoController {
             public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event) {
                 // display pin state on console
                 System.out.println(" --> GPIO PIN STATE CHANGE: " + event.getPin() + " = " + event.getState());
+                
+                if(event.getState() == PinState.LOW){
+                    System.out.println("redirecting...");
+                    localRedirect();
+                }
 
                 red.toggle();
                 green.toggle();
-                localRedirect();
+                
             }
 
         });
@@ -119,7 +124,7 @@ public class AutoController {
 
     }
 
-    @RequestMapping("/redirect")
+    //@RequestMapping("/redirect")
     public RedirectView localRedirect() {
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("http://samgoeman.com/rq/");

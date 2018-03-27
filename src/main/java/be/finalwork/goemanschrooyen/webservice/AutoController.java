@@ -7,18 +7,10 @@ package be.finalwork.goemanschrooyen.webservice;
 
 import be.finalwork.goemanschrooyen.dao.AutoDao;
 import be.finalwork.goemanschrooyen.dao.KlimaatDao;
+import be.finalwork.goemanschrooyen.devices.HomeButton;
 import be.finalwork.goemanschrooyen.devices.Potmeter;
 import be.finalwork.goemanschrooyen.model.Auto;
 import be.finalwork.goemanschrooyen.threads.TempThread;
-import com.pi4j.io.gpio.GpioController;
-import com.pi4j.io.gpio.GpioFactory;
-import com.pi4j.io.gpio.GpioPinDigitalInput;
-import com.pi4j.io.gpio.GpioPinDigitalOutput;
-import com.pi4j.io.gpio.PinPullResistance;
-import com.pi4j.io.gpio.PinState;
-import com.pi4j.io.gpio.RaspiPin;
-import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
-import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 import java.util.ArrayList;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -66,47 +58,9 @@ public class AutoController {
     @RequestMapping("/duw")
     public RedirectView duw() throws InterruptedException {
 
-        System.out.println("<--Pi4J--> GPIO Listen Example ... started.");
-
-        // create gpio controller
-        final GpioController gpio = GpioFactory.getInstance();
-
-        // provision gpio pin #02 as an input pin with its internal pull down resistor enabled
-        final GpioPinDigitalInput myButton = gpio.provisionDigitalInputPin(RaspiPin.GPIO_00, PinPullResistance.PULL_DOWN);
-
-        final GpioPinDigitalOutput red = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "MyLED", PinState.HIGH);
-
-        final GpioPinDigitalOutput green = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_02, "MyLED", PinState.LOW);
-
-        // set shutdown state for this input pin
-        myButton.setShutdownOptions(true);
-
-        // create and register gpio pin listener
-        myButton.addListener(new GpioPinListenerDigital() {
-            @Override
-            public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event) {
-                // display pin state on console
-                System.out.println(" --> GPIO PIN STATE CHANGE: " + event.getPin() + " = " + event.getState());
-
-                if (event.getState() == PinState.LOW) {
-                    System.out.println("redirecting...");
-                    rv = localRedirect();
-                    isEmpty = false;
-                }
-
-                red.toggle();
-                green.toggle();
-
-            }
-        });
-
-        do {
-            if(rv != null){
-                return rv;
-            }
-            
-        } while (isEmpty);
-        return rv;
+          HomeButton button = new HomeButton();
+          
+          return button.getRv();
     }
 
     @RequestMapping("/temp")
@@ -125,12 +79,7 @@ public class AutoController {
 
     }
 
-    //@RequestMapping("/redirect")
-    public RedirectView localRedirect() {
-        RedirectView redirectView = new RedirectView();
-        redirectView.setUrl("http://samgoeman.com/rq/");
-        return redirectView;
-    }
+ 
 
     @RequestMapping("/getById")
     public Auto getById(@RequestParam(value = "autoId", defaultValue = "1") int kenmerkId) {

@@ -120,7 +120,7 @@ public class AutoController {
 
     }
 
-    @RequestMapping(value = "/redirect", method = RequestMethod.POST)
+    @RequestMapping(value = "/redirect", method = RequestMethod.GET)
     public String processForm(HttpServletRequest request, BindingResult result, ModelMap model) {
         String redirectUrl = request.getScheme() + "://www.yahoo.com";
         return "redirect:" + redirectUrl;

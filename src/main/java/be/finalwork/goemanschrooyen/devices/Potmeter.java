@@ -25,8 +25,7 @@ public class Potmeter {
     //private List<Observer> observers = new ArrayList<Observer>();
     private int adres, potValue;
     private I2CDevice device;
-   
-    
+
     public int getAdres() {
         return adres;
     }
@@ -59,26 +58,24 @@ public class Potmeter {
     }
 
     public int readValue() {
-        System.out.println("Potmeter read value");
+        //System.out.println("Potmeter read value");
         int pot = 0;
         try {
-            
 
-                pot = device.read(0b00000011);
-                System.out.println(pot);  
-                Thread.sleep(100);
-               
-       
+            pot = device.read(0b00000011);
+            System.out.println(pot);
+            Thread.sleep(100);
+
         } catch (InterruptedException e) {
 
         } catch (IOException e) {
-            
+
         }
-        
+
         return pot;
     }
-    
-   /* public void attach(Observer observer){
+
+    /* public void attach(Observer observer){
       observers.add(observer);		
    }
 
@@ -87,6 +84,4 @@ public class Potmeter {
          observer.update();
       }
    } 	*/
-    
-    
 }

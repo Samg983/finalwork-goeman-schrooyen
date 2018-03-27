@@ -35,6 +35,9 @@ import org.springframework.web.servlet.view.RedirectView;
 @RequestMapping("/Auto")
 public class AutoController {
 
+    private RedirectView rv;
+    private boolean isEmpty = true;
+
     //OPMERKING: meestal wordt er niet zomaar doorverbonden naar methodes van de DAO
     //Meestal wordt hier nog extra code rondgeschreven.
     //Er moet ook aan security gedacht worden, een gebruiker zomaar toelaten alle gegevens uit de database te wissen is geen goed idee
@@ -62,6 +65,7 @@ public class AutoController {
 
     @RequestMapping("/duw")
     public RedirectView duw() throws InterruptedException {
+
         System.out.println("<--Pi4J--> GPIO Listen Example ... started.");
 
         // create gpio controller
@@ -83,29 +87,26 @@ public class AutoController {
             public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event) {
                 // display pin state on console
                 System.out.println(" --> GPIO PIN STATE CHANGE: " + event.getPin() + " = " + event.getState());
-                
-                if(event.getState() == PinState.LOW){
+
+                if (event.getState() == PinState.LOW) {
                     System.out.println("redirecting...");
-                    localRedirect();
+                    rv = localRedirect();
+                    isEmpty = false;
                 }
 
                 red.toggle();
                 green.toggle();
-                
-            }
 
+            }
         });
 
-        System.out.println(" ... complete the GPIO #02 circuit and see the listener feedback here in the console.");
-
-        // keep program running until user aborts (CTRL-C)
-        while (true) {
-            Thread.sleep(500);
-        }
-
-        // stop all GPIO activity/threads by shutting down the GPIO controller
-        // (this method will forcefully shutdown all GPIO monitoring threads and scheduled tasks)
-        // gpio.shutdown();   <--- implement this method call if you wish to terminate the Pi4J GPIO controller
+        do {
+            if(rv != null){
+                return rv;
+            }
+            
+        } while (isEmpty);
+        return rv;
     }
 
     @RequestMapping("/temp")

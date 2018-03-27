@@ -20,6 +20,7 @@ import org.springframework.web.servlet.view.RedirectView;
  * @author SamGoeman
  */
 public class HomeButton {
+
     private boolean isEmpty = true;
     private RedirectView rv;
 
@@ -38,8 +39,8 @@ public class HomeButton {
     public void setRv(RedirectView rv) {
         this.rv = rv;
     }
-    
-    public HomeButton(){
+
+    public HomeButton() {
         System.out.println("<--Pi4J--> GPIO Listen Example ... started.");
 
         // create gpio controller
@@ -48,7 +49,6 @@ public class HomeButton {
         // provision gpio pin #02 as an input pin with its internal pull down resistor enabled
         final GpioPinDigitalInput myButton = gpio.provisionDigitalInputPin(RaspiPin.GPIO_00, PinPullResistance.PULL_DOWN);
 
-       
         // set shutdown state for this input pin
         myButton.setShutdownOptions(true);
 
@@ -57,23 +57,26 @@ public class HomeButton {
             @Override
             public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event) {
                 // display pin state on console
-                System.out.println(" --> GPIO PIN STATE CHANGE: " + event.getPin() + " = " + event.getState());
+              
+                if (event.getState() == PinState.HIGH) {
+                    isEmpty = true;
+                    rv = null;
+                    System.out.println("Pinstate HIGH:"+ isEmpty + ". RV: " + rv);
+                }
 
                 if (event.getState() == PinState.LOW) {
                     System.out.println("redirecting...");
                     rv = localRedirect();
                     
+                    System.out.println("Pinstate LOW:"+ isEmpty + ". RV: " + rv);
+
                 }
-                
-                if (event.getState() == PinState.HIGH) {
-                    isEmpty = true;
-                    rv = null;
-                }
+
             }
         });
     }
-    
-     private RedirectView localRedirect() {
+
+    private RedirectView localRedirect() {
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("http://samgoeman.com/rq/");
         return redirectView;

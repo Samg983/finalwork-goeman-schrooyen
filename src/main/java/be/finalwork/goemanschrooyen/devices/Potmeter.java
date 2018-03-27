@@ -47,7 +47,7 @@ public class Potmeter {
         try {
             I2CBus i2c = I2CFactory.getInstance(I2CBus.BUS_1);
 
-            I2CDevice device = i2c.getDevice(0b1001000);
+            this.device = i2c.getDevice(0b1001000);
 
         } catch (IOException e) {
             System.out.println(e);

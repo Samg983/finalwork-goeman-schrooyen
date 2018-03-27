@@ -44,6 +44,7 @@ public class Potmeter {
     }
 
     public Potmeter() {
+        System.out.println("New instance potmeter");
         try {
             I2CBus i2c = I2CFactory.getInstance(I2CBus.BUS_1);
 
@@ -58,12 +59,13 @@ public class Potmeter {
     }
 
     public int readValue() {
+        System.out.println("Potmeter read value");
         int pot = 0;
         try {
             do {
 
                 pot = device.read(0b00000011);
-
+                System.out.println(pot);  
                 Thread.sleep(100);
                
             } while (true);

@@ -27,10 +27,8 @@ import org.springframework.web.servlet.view.RedirectView;
 @RequestMapping("/Auto")
 public class AutoController {
 
-   private HomeButton button = new HomeButton();
-    //OPMERKING: meestal wordt er niet zomaar doorverbonden naar methodes van de DAO
-    //Meestal wordt hier nog extra code rondgeschreven.
-    //Er moet ook aan security gedacht worden, een gebruiker zomaar toelaten alle gegevens uit de database te wissen is geen goed idee
+    private HomeButton button = new HomeButton();
+
     @RequestMapping("/getAll")
     public ArrayList<Auto> getAll() {
         // Aanroepen met
@@ -55,8 +53,13 @@ public class AutoController {
 
     @RequestMapping("/duw")
     public RedirectView duw() throws InterruptedException {
-        
-          return button.getRv();
+        do {
+            if (button.getRv() != null) {
+                button.setIsEmpty(false);
+                return button.getRv();
+            }
+        } while (button.isIsEmpty());
+        return button.getRv();
     }
 
     @RequestMapping("/temp")
@@ -74,8 +77,6 @@ public class AutoController {
         } while (true);
 
     }
-
- 
 
     @RequestMapping("/getById")
     public Auto getById(@RequestParam(value = "autoId", defaultValue = "1") int kenmerkId) {

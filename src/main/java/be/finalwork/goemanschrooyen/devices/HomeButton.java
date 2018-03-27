@@ -64,6 +64,11 @@ public class HomeButton {
                     rv = localRedirect();
                     
                 }
+                
+                if (event.getState() == PinState.HIGH) {
+                    isEmpty = true;
+                    rv = null;
+                }
             }
         });
     }

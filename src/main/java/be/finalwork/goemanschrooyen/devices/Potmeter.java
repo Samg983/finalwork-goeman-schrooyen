@@ -1,0 +1,90 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package be.finalwork.goemanschrooyen.devices;
+
+import be.finalwork.goemanschrooyen.dao.KlimaatDao;
+import be.finalwork.goemanschrooyen.threads.TempThread;
+import com.pi4j.io.i2c.I2CBus;
+import com.pi4j.io.i2c.I2CDevice;
+import com.pi4j.io.i2c.I2CFactory;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Observer;
+
+/**
+ *
+ * @author SamGoeman
+ */
+public class Potmeter {
+
+    private List<Observer> observers = new ArrayList<Observer>();
+    private int adres, potValue;
+    private I2CDevice device;
+   
+    
+    public int getAdres() {
+        return adres;
+    }
+
+    public void setAdres(int adres) {
+        this.adres = adres;
+    }
+
+    public int getPotValue() {
+        return potValue;
+    }
+
+    public void setPotValue(int potValue) {
+        this.potValue = potValue;
+    }
+
+    public Potmeter() {
+        try {
+            I2CBus i2c = I2CFactory.getInstance(I2CBus.BUS_1);
+
+            I2CDevice device = i2c.getDevice(0b1001000);
+
+        } catch (IOException e) {
+            System.out.println(e);
+        } catch (I2CFactory.UnsupportedBusNumberException e) {
+            System.out.println(e);
+        }
+
+    }
+
+    public int readValue() {
+        int pot = 0;
+        try {
+            do {
+
+                pot = device.read(0b00000011);
+
+                Thread.sleep(100);
+               
+            } while (true);
+        } catch (InterruptedException e) {
+
+        } catch (IOException e) {
+            
+        }
+        
+        return pot;
+    }
+    
+   /* public void attach(Observer observer){
+      observers.add(observer);		
+   }
+
+   public void notifyAllObservers(){
+      for (Observer observer : observers) {
+         observer.update();
+      }
+   } 	*/
+    
+    
+}

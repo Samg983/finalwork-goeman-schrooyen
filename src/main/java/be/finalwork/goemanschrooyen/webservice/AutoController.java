@@ -20,6 +20,7 @@ import com.pi4j.io.gpio.RaspiPin;
 import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 import java.util.ArrayList;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -119,8 +120,8 @@ public class AutoController {
     }
     
      @RequestMapping(value= "/redirect", method = RequestMethod.GET)
-    public ModelAndView home() {
-       return new ModelAndView("redirect:" + "file:///Users/SamGoeman/Documents/Multec/3e%20jaar/Final%20Work/2e%20semester/bootstrap/index.html");
+    public void method(HttpServletResponse r) {
+        r.setHeader("Location", "https://www.google.be");
     }
 
     @RequestMapping("/getById")

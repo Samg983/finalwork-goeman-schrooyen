@@ -54,6 +54,7 @@ public class AutoController {
     @RequestMapping("/duw")
     public RedirectView duw() throws InterruptedException {
         do {
+   
             if (button.getRv() != null) {
                 button.setIsEmpty(false);
                 return button.getRv();

@@ -67,7 +67,7 @@ public class HomeButton {
                 if (event.getState() == PinState.LOW) {
                     System.out.println("redirecting...");
                     rv = localRedirect();
-                    
+                    isEmpty = false;
                     System.out.println("Pinstate LOW:"+ isEmpty + ". RV: " + rv);
 
                 }

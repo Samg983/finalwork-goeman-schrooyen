@@ -19,9 +19,10 @@ import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
 import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 import com.pi4j.io.gpio.event.GpioPinListenerDigital;
-import java.awt.Desktop;
-import java.net.URI;
 import java.util.ArrayList;
+import javax.servlet.http.HttpServletRequest;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -119,15 +120,10 @@ public class AutoController {
 
     }
 
-    @RequestMapping(value = "/redirect", method = RequestMethod.GET)
-    public void redirect() {
-        try {
-            Desktop desktop = java.awt.Desktop.getDesktop();
-            URI oURL = new URI("http://www.google.com");
-            desktop.browse(oURL);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    @RequestMapping(value = "/redirect", method = RequestMethod.POST)
+    public String processForm(HttpServletRequest request, BindingResult result, ModelMap model) {
+        String redirectUrl = request.getScheme() + "://www.yahoo.com";
+        return "redirect:" + redirectUrl;
     }
 
     @RequestMapping("/getById")

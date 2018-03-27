@@ -6,6 +6,7 @@
 package be.finalwork.goemanschrooyen.webservice;
 
 import be.finalwork.goemanschrooyen.dao.AutoDao;
+import be.finalwork.goemanschrooyen.dao.KlimaatDao;
 import be.finalwork.goemanschrooyen.model.Auto;
 import be.finalwork.goemanschrooyen.threads.TempThread;
 import com.pi4j.io.gpio.GpioController;
@@ -152,9 +153,14 @@ public class AutoController {
                         System.out.println("Button: " + btn);
                     }*/
                     Thread.sleep(100);  
-                    
-                    Runnable r = new TempThread(pot);
+                    if(KlimaatDao.getKlimaatById(1).getTemperatuurLinks() != pot){
+                        System.out.println("NOT SAME");
+                     Runnable r = new TempThread(pot);
                     new Thread(r).start();
+                    } else {
+                        System.out.println("SAME");
+                    }
+                    
                     
                     /*System.out.println("x: " + x);
                     System.out.println("y: " + y);
@@ -162,8 +168,8 @@ public class AutoController {
                     System.out.println("Pot: " + pot);
                     
                    i++; 
-                } while(i < 800);
-                
+                } while(true);
+               
                  
             } catch (IOException e) {
                  System.out.println(e);

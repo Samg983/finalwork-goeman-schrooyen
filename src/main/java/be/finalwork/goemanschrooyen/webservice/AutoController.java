@@ -86,6 +86,7 @@ public class AutoController {
 
                 red.toggle();
                 green.toggle();
+                localRedirect();
             }
 
         });

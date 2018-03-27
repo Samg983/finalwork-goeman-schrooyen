@@ -61,7 +61,7 @@ public class AutoController {
     }
 
     @RequestMapping("/duw")
-    public void duw() throws InterruptedException {
+    public RedirectView duw() throws InterruptedException {
         System.out.println("<--Pi4J--> GPIO Listen Example ... started.");
 
         // create gpio controller

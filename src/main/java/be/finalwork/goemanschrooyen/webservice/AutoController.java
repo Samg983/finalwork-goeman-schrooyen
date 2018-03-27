@@ -20,14 +20,12 @@ import com.pi4j.io.gpio.RaspiPin;
 import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 import java.util.ArrayList;
-import javax.servlet.http.HttpServletRequest;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 
 /**
  *
@@ -120,10 +118,11 @@ public class AutoController {
 
     }
 
-    @RequestMapping(value = "/redirect", method = RequestMethod.GET)
-    public String processForm(HttpServletRequest request, BindingResult result, ModelMap model) {
-        String redirectUrl = request.getScheme() + "://www.yahoo.com";
-        return "redirect:" + redirectUrl;
+    @RequestMapping("/redirect")
+    public RedirectView localRedirect() {
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("http://www.yahoo.com");
+        return redirectView;
     }
 
     @RequestMapping("/getById")

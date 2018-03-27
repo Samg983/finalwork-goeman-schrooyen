@@ -22,7 +22,7 @@ import java.util.Observer;
  */
 public class Potmeter {
 
-    private List<Observer> observers = new ArrayList<Observer>();
+    //private List<Observer> observers = new ArrayList<Observer>();
     private int adres, potValue;
     private I2CDevice device;
    
@@ -62,13 +62,13 @@ public class Potmeter {
         System.out.println("Potmeter read value");
         int pot = 0;
         try {
-            do {
+            
 
                 pot = device.read(0b00000011);
                 System.out.println(pot);  
                 Thread.sleep(100);
                
-            } while (true);
+       
         } catch (InterruptedException e) {
 
         } catch (IOException e) {

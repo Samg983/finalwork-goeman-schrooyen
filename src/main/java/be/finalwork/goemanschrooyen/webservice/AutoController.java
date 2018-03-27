@@ -105,15 +105,15 @@ public class AutoController {
     public void temp() {
         Potmeter pm = new Potmeter();
 
-        if (KlimaatDao.getKlimaatById(1).getTemperatuurLinks() != pm.readValue()) {
-            System.out.println("NOT SAME");
-            Runnable r = new TempThread(pm.readValue());
-            new Thread(r).start();
-        } else {
-            System.out.println("SAME");
-        }
-
-        System.out.println("Pot: " + pm.readValue());
+        do {
+            if (KlimaatDao.getKlimaatById(1).getTemperatuurLinks() != pm.readValue()) {
+                System.out.println("NOT SAME");
+                Runnable r = new TempThread(pm.readValue());
+                new Thread(r).start();
+            } else {
+                System.out.println("SAME");
+            }
+        } while (true);
 
     }
 

@@ -53,7 +53,7 @@ public class AppDao {
     public static int voegAppToe(App nieuweApp) {
         int aantalAangepasteRijen = 0;
         try {
-            aantalAangepasteRijen = Database.voerSqlUitEnHaalAantalAangepasteRijenOp("INSERT INTO App (naam, beschrijving) VALUES (?,?)", new Object[]{nieuweApp.getNaam(), nieuweApp.getBeschrijving()});
+            aantalAangepasteRijen = Database.voerSqlUitEnHaalAantalAangepasteRijenOp("INSERT INTO App (naam, beschrijving, imgpath) VALUES (?,?,?)", new Object[]{nieuweApp.getNaam(), nieuweApp.getBeschrijving(), nieuweApp.getImgpath()});
         } catch (SQLException ex) {
             ex.printStackTrace();
             // Foutafhandeling naar keuze
@@ -64,7 +64,7 @@ public class AppDao {
     public static int updateApp(App nieuweApp) {
         int aantalAangepasteRijen = 0;
         try {
-            aantalAangepasteRijen = Database.voerSqlUitEnHaalAantalAangepasteRijenOp("UPDATE App SET naam = ?, beschrijving = ? WHERE appId = ?", new Object[]{nieuweApp.getNaam(), nieuweApp.getBeschrijving(), nieuweApp.getAppId()});
+            aantalAangepasteRijen = Database.voerSqlUitEnHaalAantalAangepasteRijenOp("UPDATE App SET naam = ?, beschrijving = ?, imgpath = ? WHERE appId = ?", new Object[]{nieuweApp.getNaam(), nieuweApp.getBeschrijving(), nieuweApp.getImgpath(), nieuweApp.getAppId()});
         } catch (SQLException ex) {
             ex.printStackTrace();
             // Foutafhandeling naar keuze
@@ -84,6 +84,6 @@ public class AppDao {
     }
 
     private static App converteerHuidigeRijNaarObject(ResultSet mijnResultset) throws SQLException {
-        return new App(mijnResultset.getInt("appId"), mijnResultset.getString("naam"), mijnResultset.getString("beschrijving"));
+        return new App(mijnResultset.getInt("appId"), mijnResultset.getString("naam"), mijnResultset.getString("beschrijving"), mijnResultset.getString("imgpath"));
     }
 }

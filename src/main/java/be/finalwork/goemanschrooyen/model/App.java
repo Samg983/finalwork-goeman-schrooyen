@@ -11,7 +11,7 @@ package be.finalwork.goemanschrooyen.model;
  */
 public class App {
     private int appId;
-    private String naam, beschrijving;
+    private String naam, beschrijving, imgpath;
 
     public int getAppId() {
         return appId;
@@ -37,10 +37,21 @@ public class App {
         this.beschrijving = beschrijving;
     }
 
-    public App(int appId, String naam, String beschrijving) {
+    public String getImgpath() {
+        return imgpath;
+    }
+
+    public void setImgpath(String imgpath) {
+        this.imgpath = imgpath;
+    }
+    
+    
+
+    public App(int appId, String naam, String beschrijving, String imgpath) {
         this.appId = appId;
         this.naam = naam;
         this.beschrijving = beschrijving;
+        this.imgpath = imgpath;
     }
     
     public App(){

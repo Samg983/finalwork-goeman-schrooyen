@@ -52,7 +52,7 @@ public class AutoDao {
     public static int voegAutoToe(Auto nieuweAuto) {
         int aantalAangepasteRijen = 0;
         try {
-            aantalAangepasteRijen = Database.voerSqlUitEnHaalAantalAangepasteRijenOp("INSERT INTO Auto (snelheid, schermAan, kmStand) VALUES (?,?,?)", new Object[]{nieuweAuto.getSnelheid(), nieuweAuto.getSchermAan() , nieuweAuto.getKmStand()});
+            aantalAangepasteRijen = Database.voerSqlUitEnHaalAantalAangepasteRijenOp("INSERT INTO Auto (snelheid, schermAan, kmStand, huidigeBestuurder) VALUES (?,?,?,?)", new Object[]{nieuweAuto.getSnelheid(), nieuweAuto.getSchermAan() , nieuweAuto.getKmStand(), nieuweAuto.getHuidigeBestuurder()});
         } catch (SQLException ex) {
             ex.printStackTrace();
             // Foutafhandeling naar keuze
@@ -63,7 +63,7 @@ public class AutoDao {
     public static int updateAuto(Auto nieuweAuto) {
         int aantalAangepasteRijen = 0;
         try {
-            aantalAangepasteRijen = Database.voerSqlUitEnHaalAantalAangepasteRijenOp("UPDATE Auto SET snelheid = ?, schermAan = ?, kmStand = ? WHERE autoId = ?", new Object[]{nieuweAuto.getSnelheid(), nieuweAuto.getSchermAan(),  nieuweAuto.getKmStand(), nieuweAuto.getAutoId()});
+            aantalAangepasteRijen = Database.voerSqlUitEnHaalAantalAangepasteRijenOp("UPDATE Auto SET snelheid = ?, schermAan = ?, kmStand = ? huidigeBestuurder = ? WHERE autoId = ?", new Object[]{nieuweAuto.getSnelheid(), nieuweAuto.getSchermAan(),  nieuweAuto.getKmStand(), nieuweAuto.getHuidigeBestuurder(),nieuweAuto.getAutoId()});
         } catch (SQLException ex) {
             ex.printStackTrace();
             // Foutafhandeling naar keuze
@@ -92,6 +92,6 @@ public class AutoDao {
     }
 
     private static Auto converteerHuidigeRijNaarObject(ResultSet mijnResultset) throws SQLException {
-        return new Auto(mijnResultset.getInt("autoId"), mijnResultset.getDouble("snelheid"), mijnResultset.getBoolean("schermAan"), mijnResultset.getDouble("kmStand"));
+        return new Auto(mijnResultset.getInt("autoId"), mijnResultset.getDouble("snelheid"), mijnResultset.getBoolean("schermAan"), mijnResultset.getDouble("kmStand"), mijnResultset.getInt("huidigeBestuurder"));
     }
 }

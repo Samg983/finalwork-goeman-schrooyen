@@ -52,7 +52,7 @@ public class ContactDao {
     public static int voegContactToe(Contact nieuweContact) {
         int aantalAangepasteRijen = 0;
         try {
-            aantalAangepasteRijen = Database.voerSqlUitEnHaalAantalAangepasteRijenOp("INSERT INTO Contact (naam, telnr, isFavo) VALUES (?,?,?)", new Object[]{nieuweContact.getNaam(), nieuweContact.getTelnr(), nieuweContact.getIsFavo()});
+            aantalAangepasteRijen = Database.voerSqlUitEnHaalAantalAangepasteRijenOp("INSERT INTO Contact (naam, telnr, isFavo, imgPath) VALUES (?,?,?,?)", new Object[]{nieuweContact.getNaam(), nieuweContact.getTelnr(), nieuweContact.getIsFavo(), nieuweContact.getImgPath()});
         } catch (SQLException ex) {
             ex.printStackTrace();
             // Foutafhandeling naar keuze
@@ -63,7 +63,7 @@ public class ContactDao {
     public static int updateContact(Contact nieuweContact) {
         int aantalAangepasteRijen = 0;
         try {
-            aantalAangepasteRijen = Database.voerSqlUitEnHaalAantalAangepasteRijenOp("UPDATE Contact SET naam = ?, telnr = ?, isFavo = ? WHERE contactId = ?", new Object[]{nieuweContact.getNaam(), nieuweContact.getTelnr(), nieuweContact.getIsFavo(), nieuweContact.getContactId()});
+            aantalAangepasteRijen = Database.voerSqlUitEnHaalAantalAangepasteRijenOp("UPDATE Contact SET naam = ?, telnr = ?, isFavo = ?, imgPath = ? WHERE contactId = ?", new Object[]{nieuweContact.getNaam(), nieuweContact.getTelnr(), nieuweContact.getIsFavo(), nieuweContact.getImgPath(), nieuweContact.getContactId()});
         } catch (SQLException ex) {
             ex.printStackTrace();
             // Foutafhandeling naar keuze
@@ -83,6 +83,6 @@ public class ContactDao {
     }
 
     private static Contact converteerHuidigeRijNaarObject(ResultSet mijnResultset) throws SQLException {
-        return new Contact(mijnResultset.getInt("contactId"), mijnResultset.getString("naam"), mijnResultset.getString("telnr"), mijnResultset.getBoolean("isFavo"));
+        return new Contact(mijnResultset.getInt("contactId"), mijnResultset.getString("naam"), mijnResultset.getString("telnr"), mijnResultset.getBoolean("isFavo"), mijnResultset.getString("imgPath"));
     }
 }

@@ -11,7 +11,7 @@ package be.finalwork.goemanschrooyen.model;
  */
 public class Contact {
  private int contactId;
- private String naam, telnr;
+ private String naam, telnr, imgPath;
  private Boolean isFavo;
 
     public int getContactId() {
@@ -46,11 +46,22 @@ public class Contact {
         this.isFavo = isFavo;
     }
 
-    public Contact(int contactId, String naam, String telnr, Boolean isFavo) {
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
+    }
+    
+    
+
+    public Contact(int contactId, String naam, String telnr, Boolean isFavo, String imgPath) {
         this.contactId = contactId;
         this.naam = naam;
         this.telnr = telnr;
         this.isFavo = isFavo;
+        this.imgPath = imgPath;
     }
  
  

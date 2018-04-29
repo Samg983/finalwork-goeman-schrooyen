@@ -19,10 +19,11 @@ import com.pi4j.io.i2c.I2CFactory;
  * @author pi
  */
 public class Auto {
-        private int autoId;
+        private int autoId, huidigeBestuurder;
 	private Double snelheid;
 	private Boolean schermAan;
         private Double kmStand;
+        
         
         //private I2CBus bus = I2CFactory.getInstance(0x1);
         //private I2CDevice devoce = bus.getDevice(0x48);
@@ -59,11 +60,22 @@ public class Auto {
         this.kmStand = kmStand;
     }
 
-    public Auto(int autoId, Double snelheid, Boolean schermAan, Double kmStand) {
+    public int getHuidigeBestuurder() {
+        return huidigeBestuurder;
+    }
+
+    public void setHuidigeBestuurder(int huidigeBestuurder) {
+        this.huidigeBestuurder = huidigeBestuurder;
+    }
+    
+    
+
+    public Auto(int autoId, Double snelheid, Boolean schermAan, Double kmStand, int huidigeBestuurder) {
         this.autoId = autoId;
         this.snelheid = snelheid;
         this.schermAan = schermAan;
         this.kmStand = kmStand;
+        this.huidigeBestuurder = huidigeBestuurder;
     }
 
     

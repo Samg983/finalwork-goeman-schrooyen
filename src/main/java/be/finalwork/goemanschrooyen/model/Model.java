@@ -13,6 +13,9 @@ import java.beans.PropertyChangeListener;
  */
 public interface Model {
    public void notifyListeners(Object object, String property, double oldValue, double newValue); 
-
+   public void notifyListeners(Object object, String property, int oldValue, int newValue);
+   public void notifyListeners(Object object, String property, String oldValue, String newValue); 
+   public void notifyListeners(Object object, String property, boolean oldValue, boolean newValue); 
    public void addChangeListener(PropertyChangeListener newListener); 
 }
+

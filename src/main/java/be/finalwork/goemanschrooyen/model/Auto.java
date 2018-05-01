@@ -66,11 +66,13 @@ public class Auto implements Model {
     }
 
     public int getHuidigeBestuurder() {
+        
         return huidigeBestuurder;
     }
 
     public void setHuidigeBestuurder(int huidigeBestuurder) {
-        this.huidigeBestuurder = huidigeBestuurder;
+        notifyListeners(this, "HuidigeBestuurder", this.huidigeBestuurder, this.huidigeBestuurder = huidigeBestuurder);
+     
     }
 
     @Override
@@ -79,6 +81,23 @@ public class Auto implements Model {
             name.propertyChange(new PropertyChangeEvent(this, property, oldValue, newValue));
         }
     }
+
+    @Override
+    public void notifyListeners(Object object, String property, int oldValue, int newValue) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void notifyListeners(Object object, String property, String oldValue, String newValue) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void notifyListeners(Object object, String property, boolean oldValue, boolean newValue) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
 
     @Override
     public void addChangeListener(PropertyChangeListener newListener) {

@@ -97,8 +97,10 @@ public class AutoController {
 
       Auto auto = AutoDao.getAutoById(kenmerkId);
       auto.setKmStand(50.3);
+      auto.setHuidigeBestuurder(2);
       AutoDao.updateAuto(auto);
       
+  
       return auto;
       
     }

@@ -55,25 +55,20 @@ public class AutoController {
         AutoDao.blink();
     }
 
-//    @RequestMapping("/duw")
-//    public RedirectView duw() throws InterruptedException {
-//        do {
-//   
-//            if (button.getRv() != null) {
-//                button.setIsEmpty(false);
-//                return button.getRv();
-//            }
-//        } while (button.isIsEmpty());
-//        return button.getRv();
-//    }
+    @RequestMapping("/duw")
+    public RedirectView duw() throws InterruptedException {
+        do {
+   
+            if (button.getRv() != null) {
+                button.setIsEmpty(false);
+                return button.getRv();
+            }
+        } while (button.isIsEmpty());
+        return button.getRv();
+    }
 
     
-     @RequestMapping("/duw")
-    public void duw() {
-       
-    }
-    
-    
+  
     
     @RequestMapping("/temp")
     public void temp() {

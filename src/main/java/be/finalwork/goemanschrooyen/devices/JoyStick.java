@@ -82,7 +82,7 @@ public class JoyStick {
                 if (btn == 0) {
                     System.out.println("Button: " + btn);
                 }
-                Thread.sleep(100);
+                Thread.sleep(1000);
                 /*if(KlimaatDao.getKlimaatById(1).getTemperatuurLinks() != pot){
                         System.out.println("NOT SAME");
                      Runnable r = new TempThread(pot);

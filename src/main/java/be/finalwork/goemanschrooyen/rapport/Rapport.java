@@ -11,6 +11,7 @@ package be.finalwork.goemanschrooyen.rapport;
  */
 public class Rapport {
     private int rapportCounter;
+    private int joyStickX;
     
     public Rapport(){
         
@@ -22,5 +23,13 @@ public class Rapport {
     
     public void setRapportCounter(int rapportCounter){
         this.rapportCounter = rapportCounter;
+    }
+    
+    public int getJoyStickX(){
+        return this.joyStickX;
+    }
+    
+    public void setJoyStickX(int joyStickX){
+        this.joyStickX = joyStickX;
     }
 }

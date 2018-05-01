@@ -6,6 +6,7 @@
 package be.finalwork.goemanschrooyen.webservice;
 
 import be.finalwork.goemanschrooyen.devices.HomeButton;
+import be.finalwork.goemanschrooyen.devices.JoyStick;
 import be.finalwork.goemanschrooyen.rapport.Rapport;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,11 +20,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class RapportController {
 
     private HomeButton button = new HomeButton();
-
+    private JoyStick joystick = new JoyStick();
+    
+    
     @RequestMapping("/getRapport")
     public Rapport getRapport() {
         Rapport rapport = new Rapport();
         rapport.setRapportCounter(button.getCounter());
+        rapport.setJoyStickX(0);
         return rapport;
     }
     

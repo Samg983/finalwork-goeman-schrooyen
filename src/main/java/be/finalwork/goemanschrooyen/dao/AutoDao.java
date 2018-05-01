@@ -66,7 +66,7 @@ public class AutoDao {
     public static int updateAuto(Auto nieuweAuto) {
         int aantalAangepasteRijen = 0;
         try {
-            aantalAangepasteRijen = Database.voerSqlUitEnHaalAantalAangepasteRijenOp("UPDATE Auto SET snelheid = ?, schermAan = ?, kmStand = ? huidigeBestuurder = ? WHERE autoId = ?", new Object[]{nieuweAuto.getSnelheid(), nieuweAuto.getSchermAan(),  nieuweAuto.getKmStand(), nieuweAuto.getHuidigeBestuurder(),nieuweAuto.getAutoId()});
+            aantalAangepasteRijen = Database.voerSqlUitEnHaalAantalAangepasteRijenOp("UPDATE Auto SET snelheid = ?, schermAan = ?, kmStand = ?, huidigeBestuurder = ? WHERE autoId = ?", new Object[]{nieuweAuto.getSnelheid(), nieuweAuto.getSchermAan(),  nieuweAuto.getKmStand(), nieuweAuto.getHuidigeBestuurder(),nieuweAuto.getAutoId()});
         } catch (SQLException ex) {
             ex.printStackTrace();
             // Foutafhandeling naar keuze

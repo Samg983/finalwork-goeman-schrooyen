@@ -5,15 +5,23 @@
  */
 package be.finalwork.goemanschrooyen.model;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author SamGoeman
  */
-public class Klimaat {
+public class Klimaat implements Model{
     private int klimaatId;
     private double temperatuurLinks, temperatuurRechts;
     private boolean ruitontdooiing;
     private int ventilatieSterkteLinks, ventilatieSterkteRechts, zetelverwarmingLinks, zetelverwarmingRechts;
+    
+    private List<PropertyChangeListener> listener = new ArrayList<PropertyChangeListener>();
+
 
     public int getKlimaatId() {
         return klimaatId;
@@ -36,7 +44,7 @@ public class Klimaat {
     }
 
     public void setTemperatuurRechts(double temperatuurRechts) {
-        this.temperatuurRechts = temperatuurRechts;
+        notifyListeners(this, "TempRechts", this.temperatuurRechts, this.temperatuurRechts = temperatuurRechts); 
     }
 
     public boolean getRuitontdooiing() {
@@ -95,4 +103,39 @@ public class Klimaat {
     public Klimaat(){
         
     }
+
+    @Override
+    public void notifyListeners(Object object, String property, double oldValue, double newValue) {
+        for (PropertyChangeListener name : listener) {
+            name.propertyChange(new PropertyChangeEvent(this, property, oldValue, newValue));
+        }
+    }
+
+    @Override
+    public void notifyListeners(Object object, String property, int oldValue, int newValue) {
+        for (PropertyChangeListener name : listener) {
+            name.propertyChange(new PropertyChangeEvent(this, property, oldValue, newValue));
+        }
+    }
+
+    @Override
+    public void notifyListeners(Object object, String property, String oldValue, String newValue) {
+        for (PropertyChangeListener name : listener) {
+            name.propertyChange(new PropertyChangeEvent(this, property, oldValue, newValue));
+        }
+    }
+
+    @Override
+    public void notifyListeners(Object object, String property, boolean oldValue, boolean newValue) {
+       for (PropertyChangeListener name : listener) {
+            name.propertyChange(new PropertyChangeEvent(this, property, oldValue, newValue));
+        }
+    }
+
+    @Override
+    public void addChangeListener(PropertyChangeListener newListener) {
+        listener.add(newListener);
+    }
+    
+    
 }

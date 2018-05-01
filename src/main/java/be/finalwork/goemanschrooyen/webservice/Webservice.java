@@ -5,12 +5,10 @@
  */
 package be.finalwork.goemanschrooyen.webservice;
 
-import be.finalwork.goemanschrooyen.model.Auto;
+import be.finalwork.goemanschrooyen.devices.HomeButton;
 import be.finalwork.goemanschrooyen.observers.MyObserver;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.CrossOrigin;
 /**
  *
  * @author Maarten Heylen
@@ -21,7 +19,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 public class Webservice {
         public static void main(String[] args) {
         
+       HomeButton button = new HomeButton();
+     
        
-        SpringApplication.run(Webservice.class, args);
+       SpringApplication.run(Webservice.class, args);
     }
 }

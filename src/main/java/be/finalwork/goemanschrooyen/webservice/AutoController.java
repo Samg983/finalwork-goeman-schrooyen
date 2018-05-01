@@ -11,6 +11,7 @@ import be.finalwork.goemanschrooyen.devices.HomeButton;
 import be.finalwork.goemanschrooyen.devices.Potmeter;
 
 import be.finalwork.goemanschrooyen.model.Auto;
+import be.finalwork.goemanschrooyen.model.Klimaat;
 import be.finalwork.goemanschrooyen.threads.TempThread;
 
 import java.util.ArrayList;
@@ -54,18 +55,26 @@ public class AutoController {
         AutoDao.blink();
     }
 
-    @RequestMapping("/duw")
-    public RedirectView duw() throws InterruptedException {
-        do {
-   
-            if (button.getRv() != null) {
-                button.setIsEmpty(false);
-                return button.getRv();
-            }
-        } while (button.isIsEmpty());
-        return button.getRv();
-    }
+//    @RequestMapping("/duw")
+//    public RedirectView duw() throws InterruptedException {
+//        do {
+//   
+//            if (button.getRv() != null) {
+//                button.setIsEmpty(false);
+//                return button.getRv();
+//            }
+//        } while (button.isIsEmpty());
+//        return button.getRv();
+//    }
 
+    
+     @RequestMapping("/duw")
+    public void duw() {
+       
+    }
+    
+    
+    
     @RequestMapping("/temp")
     public void temp() {
         Potmeter pm = new Potmeter();
@@ -100,7 +109,10 @@ public class AutoController {
       auto.setHuidigeBestuurder(2);
       AutoDao.updateAuto(auto);
       
-  
+      Klimaat klimaat = KlimaatDao.getKlimaatById(1);
+      klimaat.setTemperatuurRechts(30.0);
+      KlimaatDao.updateKlimaat(klimaat);
+      
       return auto;
       
     }

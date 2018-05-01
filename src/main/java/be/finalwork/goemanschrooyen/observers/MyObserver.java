@@ -23,4 +23,6 @@ public class MyObserver implements PropertyChangeListener {
         System.out.println("Changed property: " + event.getPropertyName() + " [old -> "
             + event.getOldValue() + "] | [new -> " + event.getNewValue() +"]");
     }
+    
+    
 }

@@ -21,10 +21,11 @@ import org.springframework.web.servlet.view.RedirectView;
  *
  * @author SamGoeman
  */
-public class HomeButton{
+public class HomeButton {
 
     private boolean isEmpty = true;
     private RedirectView rv;
+    private int counter;
 
     public boolean isIsEmpty() {
         return isEmpty;
@@ -41,8 +42,17 @@ public class HomeButton{
     public void setRv(RedirectView rv) {
         this.rv = rv;
     }
+    
+    public int getCounter(){
+        return this.counter;
+    }
+    
+    public void setCounter(int counter){
+        this.counter = counter;
+    }
 
     public HomeButton() {
+        this.counter = 0;
         System.out.println("<--Pi4J--> GPIO Listen Example ... started.");
 
         // create gpio controller
@@ -59,32 +69,29 @@ public class HomeButton{
             @Override
             public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event) {
                 // display pin state on console
-              
+
                 if (event.getState() == PinState.HIGH) {
 //                    isEmpty = true;
 //                    rv = null;
-                    System.out.println("Pinstate HIGH:"+ isEmpty + ". RV: " + rv);
+                    System.out.println("Pinstate HIGH:" + isEmpty + ". RV: " + rv);
                 }
 
                 if (event.getState() == PinState.LOW) {
 //                    System.out.println("redirecting...");
 //                    rv = localRedirect();
 //                    isEmpty = false;
-                    System.out.println("Pinstate LOW:"+ isEmpty + ". RV: " + rv);
+                    setCounter(counter++);
+                    System.out.println("Pinstate LOW:" + isEmpty + ". Counter: " + counter);
 
                 }
 
             }
         });
     }
-    
-    
 
     /*private RedirectView localRedirect() {
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("http://samgoeman.com/rq/");
         return redirectView;
     }*/
-
-   
 }

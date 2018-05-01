@@ -42,12 +42,12 @@ public class HomeButton {
     public void setRv(RedirectView rv) {
         this.rv = rv;
     }
-    
-    public int getCounter(){
+
+    public int getCounter() {
         return this.counter;
     }
-    
-    public void setCounter(int counter){
+
+    public void setCounter(int counter) {
         this.counter = counter;
     }
 
@@ -80,7 +80,8 @@ public class HomeButton {
 //                    System.out.println("redirecting...");
 //                    rv = localRedirect();
 //                    isEmpty = false;
-                    setCounter(counter++);
+                    counter = counter + 1;
+                    setCounter(counter);
                     System.out.println("Pinstate LOW:" + isEmpty + ". Counter: " + counter);
 
                 }

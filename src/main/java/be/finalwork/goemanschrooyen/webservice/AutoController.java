@@ -9,6 +9,7 @@ import be.finalwork.goemanschrooyen.dao.AutoDao;
 import be.finalwork.goemanschrooyen.dao.KlimaatDao;
 import be.finalwork.goemanschrooyen.devices.HomeButton;
 import be.finalwork.goemanschrooyen.devices.Potmeter;
+
 import be.finalwork.goemanschrooyen.model.Auto;
 import be.finalwork.goemanschrooyen.threads.TempThread;
 

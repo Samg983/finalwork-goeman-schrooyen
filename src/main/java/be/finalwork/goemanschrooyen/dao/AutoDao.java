@@ -6,7 +6,7 @@
 package be.finalwork.goemanschrooyen.dao;
 
 import be.finalwork.goemanschrooyen.model.Auto;
-import be.finalwork.goemanschrooyen.observers.MyObserver;
+//import be.finalwork.goemanschrooyen.observers.MyObserver;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class AutoDao {
             if (mijnResultset != null) {
                 while (mijnResultset.next()) {
                     Auto huidigeAuto = converteerHuidigeRijNaarObject(mijnResultset);
-                    MyObserver observer = new MyObserver(huidigeAuto);
+                    //MyObserver observer = new MyObserver(huidigeAuto);
                     resultaat.add(huidigeAuto);
                 }
             }
@@ -42,7 +42,7 @@ public class AutoDao {
             if (mijnResultset != null) {
                 mijnResultset.first();
                 resultaat = converteerHuidigeRijNaarObject(mijnResultset);
-                MyObserver observer = new MyObserver(resultaat);
+                //MyObserver observer = new MyObserver(resultaat);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

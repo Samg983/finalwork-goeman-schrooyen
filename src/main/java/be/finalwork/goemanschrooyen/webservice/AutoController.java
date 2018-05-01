@@ -90,8 +90,7 @@ public class AutoController {
         return AutoDao.getAutoById(kenmerkId);
     }
     
-    /*
-@RequestMapping("/setKm")
+    @RequestMapping("/setKm")
     public Auto setKm(@RequestParam(value = "autoId", defaultValue = "1") int kenmerkId) {
         // Aanroepen met
         // http://localhost:8080/Auto/getById?auteurId=2
@@ -102,7 +101,7 @@ public class AutoController {
       
       return auto;
       
-    }*/
+    }
 
 
     @RequestMapping("/verwijderById")

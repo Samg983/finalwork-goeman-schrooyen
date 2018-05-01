@@ -91,9 +91,9 @@ public class JoyStick {
                         System.out.println("SAME");
                     }*/
 
-                System.out.println("x: " + x);
-                System.out.println("y: " + y);
-                System.out.println("Btn: " + btn);
+//                System.out.println("x: " + x);
+//                System.out.println("y: " + y);
+//                System.out.println("Btn: " + btn);
                 //System.out.println("Pot: " + pot);
 
                 i++;

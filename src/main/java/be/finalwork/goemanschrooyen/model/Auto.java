@@ -13,21 +13,25 @@ import com.pi4j.io.gpio.RaspiPin;
 import com.pi4j.io.i2c.I2CBus;
 import com.pi4j.io.i2c.I2CDevice;
 import com.pi4j.io.i2c.I2CFactory;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author pi
  */
-public class Auto {
-        private int autoId, huidigeBestuurder;
-	private Double snelheid;
-	private Boolean schermAan;
-        private Double kmStand;
-        
-        
-        //private I2CBus bus = I2CFactory.getInstance(0x1);
-        //private I2CDevice devoce = bus.getDevice(0x48);
+public class Auto implements Model {
 
+    private int autoId, huidigeBestuurder;
+    private Double snelheid;
+    private Boolean schermAan;
+    private Double kmStand;
+    private List<PropertyChangeListener> listener = new ArrayList<PropertyChangeListener>();
+
+    //private I2CBus bus = I2CFactory.getInstance(0x1);
+    //private I2CDevice devoce = bus.getDevice(0x48);
     public int getAutoId() {
         return autoId;
     }
@@ -57,7 +61,8 @@ public class Auto {
     }
 
     public void setKmStand(Double kmStand) {
-        this.kmStand = kmStand;
+        notifyListeners(this, "KMSTAND", this.kmStand, this.kmStand = kmStand);
+        //this.kmStand = kmStand;
     }
 
     public int getHuidigeBestuurder() {
@@ -67,8 +72,18 @@ public class Auto {
     public void setHuidigeBestuurder(int huidigeBestuurder) {
         this.huidigeBestuurder = huidigeBestuurder;
     }
-    
-    
+
+    @Override
+    public void notifyListeners(Object object, String property, double oldValue, double newValue) {
+         for (PropertyChangeListener name : listener) {
+            name.propertyChange(new PropertyChangeEvent(this, property, oldValue, newValue));
+        }
+    }
+
+    @Override
+    public void addChangeListener(PropertyChangeListener newListener) {
+         listener.add(newListener);
+    }
 
     public Auto(int autoId, Double snelheid, Boolean schermAan, Double kmStand, int huidigeBestuurder) {
         this.autoId = autoId;
@@ -78,20 +93,18 @@ public class Auto {
         this.huidigeBestuurder = huidigeBestuurder;
     }
 
-    
-	// Default constructor is nodig voor automatische omzetting van JSON naar
-	// object
-	public Auto() {
+    // Default constructor is nodig voor automatische omzetting van JSON naar
+    // object
+    public Auto() {
 
-	}
-	
-        @Override
-	public String toString(){
-		return "Auto nr: " + this.autoId;
-	}
-        
-        
-        public static void blink() throws InterruptedException {
+    }
+
+    @Override
+    public String toString() {
+        return "Auto nr: " + this.autoId;
+    }
+
+    public static void blink() throws InterruptedException {
 
         System.out.println("<--Pi4J--> GPIO Control Example ... started.");
 
@@ -136,9 +149,9 @@ public class Auto {
 
         System.out.println("Exiting ControlGpioExample");
     }
-        
-        public void pot()  {
- /*try 
+
+    public void pot() {
+        /*try 
     {
         devoce.write((byte) (0x40 | (sensorId & 3)));
         devoce.read();
@@ -150,6 +163,6 @@ public class Auto {
         logger.error("IOEXception " + e.getMessage() + " reading sensor " + sensorId);
         return false;
     }*/
-     
+
     }
 }

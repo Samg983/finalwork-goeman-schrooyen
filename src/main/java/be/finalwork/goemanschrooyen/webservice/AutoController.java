@@ -11,7 +11,9 @@ import be.finalwork.goemanschrooyen.devices.HomeButton;
 import be.finalwork.goemanschrooyen.devices.Potmeter;
 import be.finalwork.goemanschrooyen.model.Auto;
 import be.finalwork.goemanschrooyen.threads.TempThread;
+
 import java.util.ArrayList;
+
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -86,6 +88,20 @@ public class AutoController {
 
         return AutoDao.getAutoById(kenmerkId);
     }
+    
+    @RequestMapping("/setKm")
+    public Auto setKm(@RequestParam(value = "autoId", defaultValue = "1") int kenmerkId) {
+        // Aanroepen met
+        // http://localhost:8080/Auto/getById?auteurId=2
+
+      Auto auto = AutoDao.getAutoById(kenmerkId);
+      auto.setKmStand(50.3);
+      AutoDao.updateAuto(auto);
+      
+      return auto;
+      
+    }
+
 
     @RequestMapping("/verwijderById")
     public int verwijderById(@RequestParam(value = "autoId", defaultValue = "1") int AutoId) {

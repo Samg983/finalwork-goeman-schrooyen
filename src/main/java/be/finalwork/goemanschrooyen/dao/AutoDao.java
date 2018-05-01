@@ -6,7 +6,7 @@
 package be.finalwork.goemanschrooyen.dao;
 
 import be.finalwork.goemanschrooyen.model.Auto;
-//import be.finalwork.goemanschrooyen.observers.MyObserver;
+import be.finalwork.goemanschrooyen.observers.MyObserver;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;

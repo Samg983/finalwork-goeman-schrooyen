@@ -53,7 +53,7 @@ public class HomeButton {
 
     public HomeButton() {
         this.counter = 0;
-        System.out.println("<--Pi4J--> GPIO Listen Example ... started.");
+        
 
         // create gpio controller
         final GpioController gpio = GpioFactory.getInstance();
@@ -71,9 +71,7 @@ public class HomeButton {
                 // display pin state on console
 
                 if (event.getState() == PinState.HIGH) {
-//                    isEmpty = true;
-//                    rv = null;
-                    System.out.println("Pinstate HIGH:" + isEmpty + ". RV: " + rv);
+                    System.out.println("Pinstate HIGH:" + isEmpty);
                 }
 
                 if (event.getState() == PinState.LOW) {

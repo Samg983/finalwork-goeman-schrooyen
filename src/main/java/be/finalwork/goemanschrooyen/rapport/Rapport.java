@@ -10,5 +10,17 @@ package be.finalwork.goemanschrooyen.rapport;
  * @author SamGoeman
  */
 public class Rapport {
+    private int rapportCounter;
     
+    public Rapport(){
+        
+    }
+    
+    public int getRapportCounter(){
+        return rapportCounter;
+    }
+    
+    public void setRapportCounter(int rapportCounter){
+        this.rapportCounter = rapportCounter;
+    }
 }

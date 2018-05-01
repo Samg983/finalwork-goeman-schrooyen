@@ -31,7 +31,6 @@ import org.springframework.web.servlet.view.RedirectView;
 @RequestMapping("/Auto")
 public class AutoController {
 
-    private HomeButton button = new HomeButton();
 
     @RequestMapping("/getAll")
     public ArrayList<Auto> getAll() {
@@ -55,17 +54,17 @@ public class AutoController {
         AutoDao.blink();
     }
 
-    @RequestMapping("/duw")
-    public RedirectView duw() throws InterruptedException {
-        do {
-   
-            if (button.getRv() != null) {
-                button.setIsEmpty(false);
-                return button.getRv();
-            }
-        } while (button.isIsEmpty());
-        return button.getRv();
-    }
+//    @RequestMapping("/duw")
+//    public RedirectView duw() throws InterruptedException {
+//        do {
+//   
+//            if (button.getRv() != null) {
+//                button.setIsEmpty(false);
+//                return button.getRv();
+//            }
+//        } while (button.isIsEmpty());
+//        return button.getRv();
+//    }
 
     
   

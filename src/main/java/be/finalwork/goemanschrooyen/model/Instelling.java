@@ -12,7 +12,7 @@ package be.finalwork.goemanschrooyen.model;
 public class Instelling {
     private int instellingId;
     private boolean isGebruikerInstelling, isAan;
-    private String naam;
+    private String naam, categorie;
 
     public int getInstellingId() {
         return instellingId;
@@ -46,11 +46,22 @@ public class Instelling {
         this.naam = naam;
     }
 
-    public Instelling(int instellingId, boolean isGebruikerInstelling, boolean isAan, String naam) {
+    public String getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(String categorie) {
+        this.categorie = categorie;
+    }
+    
+    
+
+    public Instelling(int instellingId, boolean isGebruikerInstelling, boolean isAan, String naam, String categorie) {
         this.instellingId = instellingId;
         this.isGebruikerInstelling = isGebruikerInstelling;
         this.isAan = isAan;
         this.naam = naam;
+        this.categorie = categorie;
     }
     
     

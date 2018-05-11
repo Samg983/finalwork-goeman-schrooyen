@@ -53,7 +53,7 @@ public class InstellingDao {
     public static int voegInstellingToe(Instelling nieuweInstelling) {
         int aantalAangepasteRijen = 0;
         try {
-            aantalAangepasteRijen = Database.voerSqlUitEnHaalAantalAangepasteRijenOp("INSERT INTO Instelling (isGebruikerInstelling, isAan, naam) VALUES (?,?,?)", new Object[]{nieuweInstelling.getIsGebruikerInstelling(), nieuweInstelling.getIsAan(), nieuweInstelling.getNaam()});
+            aantalAangepasteRijen = Database.voerSqlUitEnHaalAantalAangepasteRijenOp("INSERT INTO Instelling (isGebruikerInstelling, isAan, naam, categorie) VALUES (?,?,?,?)", new Object[]{nieuweInstelling.getIsGebruikerInstelling(), nieuweInstelling.getIsAan(), nieuweInstelling.getNaam(), nieuweInstelling.getCategorie()});
         } catch (SQLException ex) {
             ex.printStackTrace();
             // Foutafhandeling naar keuze
@@ -64,7 +64,7 @@ public class InstellingDao {
     public static int updateInstelling(Instelling nieuweInstelling) {
         int aantalAangepasteRijen = 0;
         try {
-            aantalAangepasteRijen = Database.voerSqlUitEnHaalAantalAangepasteRijenOp("UPDATE Instelling SET isGebruikerInstelling = ?, isAan = ?, naam = ? WHERE instellingId = ?", new Object[]{nieuweInstelling.getIsGebruikerInstelling(), nieuweInstelling.getIsAan(), nieuweInstelling.getNaam(), nieuweInstelling.getInstellingId()});
+            aantalAangepasteRijen = Database.voerSqlUitEnHaalAantalAangepasteRijenOp("UPDATE Instelling SET isGebruikerInstelling = ?, isAan = ?, naam = ?, categorie = ? WHERE instellingId = ?", new Object[]{nieuweInstelling.getIsGebruikerInstelling(), nieuweInstelling.getIsAan(), nieuweInstelling.getNaam(), nieuweInstelling.getCategorie(), nieuweInstelling.getInstellingId()});
         } catch (SQLException ex) {
             ex.printStackTrace();
             // Foutafhandeling naar keuze
@@ -84,6 +84,6 @@ public class InstellingDao {
     }
 
     private static Instelling converteerHuidigeRijNaarObject(ResultSet mijnResultset) throws SQLException {
-        return new Instelling(mijnResultset.getInt("instellingId"), mijnResultset.getBoolean("isGebruikerInstelling"), mijnResultset.getBoolean("isAan"), mijnResultset.getString("naam"));
+        return new Instelling(mijnResultset.getInt("instellingId"), mijnResultset.getBoolean("isGebruikerInstelling"), mijnResultset.getBoolean("isAan"), mijnResultset.getString("naam"), mijnResultset.getString("categorie"));
     }
 }

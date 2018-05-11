@@ -27,7 +27,7 @@ public class RapportController {
     public Rapport getRapport() {
         Rapport rapport = new Rapport();
         rapport.setRapportCounter(button.getCounter());
-        rapport.setJoyStickX(5);
+        //rapport.setJoyStickX(5);
         return rapport;
     }
     

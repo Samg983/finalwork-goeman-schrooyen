@@ -5,8 +5,6 @@
  */
 package be.finalwork.goemanschrooyen.devices;
 
-import be.finalwork.goemanschrooyen.dao.KlimaatDao;
-import be.finalwork.goemanschrooyen.threads.TempThread;
 import com.pi4j.io.i2c.I2CBus;
 import com.pi4j.io.i2c.I2CDevice;
 import com.pi4j.io.i2c.I2CFactory;
@@ -51,6 +49,9 @@ public class JoyStick {
             I2CBus i2c = I2CFactory.getInstance(I2CBus.BUS_1);
 
             I2CDevice device = i2c.getDevice(0b1001000);
+            
+           
+            
             /*device.write((byte) 0b1100011);
                   System.out.println("written");
                   Thread.sleep(500);

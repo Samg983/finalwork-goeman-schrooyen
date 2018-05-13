@@ -29,6 +29,9 @@ public class RapportController {
         //joystick = new JoyStick();
         pm = new Potmeter();
         
+        do {
+            pm.readValue();
+        } while(true);
         /*Thread joystickThread = new Thread(joystick);
         joystickThread.start();*/
     }

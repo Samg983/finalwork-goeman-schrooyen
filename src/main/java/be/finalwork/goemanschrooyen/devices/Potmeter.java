@@ -5,13 +5,11 @@
  */
 package be.finalwork.goemanschrooyen.devices;
 
-
 import com.pi4j.io.i2c.I2CBus;
 import com.pi4j.io.i2c.I2CDevice;
 import com.pi4j.io.i2c.I2CFactory;
 
 import java.io.IOException;
-
 
 /**
  *
@@ -63,14 +61,11 @@ public class Potmeter {
             System.out.println(pot);
             Thread.sleep(100);
 
-        } catch (InterruptedException e) {
-
-        } catch (IOException e) {
-
+        } catch (InterruptedException | IOException e) {
+            System.out.println(e);
         }
 
         return pot;
     }
 
-  
 }

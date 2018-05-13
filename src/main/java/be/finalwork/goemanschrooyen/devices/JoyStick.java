@@ -46,7 +46,6 @@ public class JoyStick implements Runnable {
 
     @Override
     public void run() {
-        int i = 0;
         try {
             do {
 
@@ -81,12 +80,11 @@ public class JoyStick implements Runnable {
 //                System.out.println("y: " + y);
 //                System.out.println("Btn: " + btn);
                 //System.out.println("Pot: " + pot);
-                i++;
             } while (true);
         } catch (InterruptedException e) {
-
+            System.out.println(e);
         } catch (IOException e) {
-
+            System.out.println(e);
         }
 
     }
@@ -96,7 +94,9 @@ public class JoyStick implements Runnable {
             I2CBus i2c = I2CFactory.getInstance(I2CBus.BUS_1);
 
             this.device = i2c.getDevice(0b1001000);
+                         System.out.println("DEVICE");
 
+             System.out.println(device);
             /*device.write((byte) 0b1100011);
                   System.out.println("written");
                   Thread.sleep(500);

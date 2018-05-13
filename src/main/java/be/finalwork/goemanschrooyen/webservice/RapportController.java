@@ -8,6 +8,7 @@ package be.finalwork.goemanschrooyen.webservice;
 import be.finalwork.goemanschrooyen.devices.HomeButton;
 import be.finalwork.goemanschrooyen.devices.JoyStick;
 import be.finalwork.goemanschrooyen.devices.Potmeter;
+import be.finalwork.goemanschrooyen.observers.MyObserver;
 import be.finalwork.goemanschrooyen.rapport.Rapport;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,6 +29,8 @@ public class RapportController {
     public RapportController() {
         rapport = new Rapport();
         button = new HomeButton();
+        
+        MyObserver buttonObserver = new MyObserver(button);
         //joystick = new JoyStick();
         //pm = new Potmeter();
 

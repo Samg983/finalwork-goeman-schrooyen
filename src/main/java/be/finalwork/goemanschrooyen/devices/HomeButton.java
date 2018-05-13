@@ -53,6 +53,7 @@ public class HomeButton implements Model {
     }
 
     public void setCounter(int counter) {
+         System.out.println("setCounter");
         notifyListeners(this, "counterButton", this.counter, this.counter = counter); 
     }
 
@@ -80,9 +81,7 @@ public class HomeButton implements Model {
                 }
 
                 if (event.getState() == PinState.LOW) {
-//                    System.out.println("redirecting...");
-//                    rv = localRedirect();
-//                    isEmpty = false;
+
                     counter = counter + 1;
                     setCounter(counter);
                     System.out.println("Pinstate LOW:" + isEmpty + ". Counter: " + counter);

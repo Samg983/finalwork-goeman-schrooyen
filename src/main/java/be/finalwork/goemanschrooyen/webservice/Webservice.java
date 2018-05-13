@@ -15,7 +15,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
  *
  * @author Maarten Heylen
  */
-//@EnableAutoConfiguration
+
+@EnableAutoConfiguration
 
 @SpringBootApplication
 public class Webservice {

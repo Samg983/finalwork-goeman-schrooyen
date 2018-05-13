@@ -27,12 +27,12 @@ public class RapportController {
 
     public RapportController() {
         rapport = new Rapport();
-        //button = new HomeButton();
+        button = new HomeButton();
         //joystick = new JoyStick();
-        pm = new Potmeter();
+        //pm = new Potmeter();
 
-        Thread potmeterThread = new Thread(pm);
-        potmeterThread.start();
+       // Thread potmeterThread = new Thread(pm);
+        //potmeterThread.start();
         /*Thread joystickThread = new Thread(joystick);
         joystickThread.start();*/
     }

@@ -5,8 +5,7 @@
  */
 package be.finalwork.goemanschrooyen.webservice;
 
-import be.finalwork.goemanschrooyen.devices.HomeButton;
-import be.finalwork.goemanschrooyen.observers.MyObserver;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

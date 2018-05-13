@@ -5,7 +5,6 @@
  */
 package be.finalwork.goemanschrooyen.devices;
 
-import be.finalwork.goemanschrooyen.model.Model;
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalInput;

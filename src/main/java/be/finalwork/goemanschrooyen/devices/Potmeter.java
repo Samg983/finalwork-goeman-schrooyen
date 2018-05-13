@@ -15,7 +15,7 @@ import java.io.IOException;
  *
  * @author SamGoeman
  */
-public class Potmeter {
+public class Potmeter implements Runnable {
 
     //private List<Observer> observers = new ArrayList<Observer>();
     private int adres, potValue;
@@ -66,6 +66,23 @@ public class Potmeter {
         }
 
         return pot;
+    }
+
+    @Override
+    public void run() {
+        //System.out.println("Potmeter read value");
+        int pot = 0;
+        do {
+            try {
+
+                pot = device.read(0b00000011);
+                System.out.println(pot);
+                Thread.sleep(100);
+
+            } catch (InterruptedException | IOException e) {
+                System.out.println(e);
+            }
+        } while (true);
     }
 
 }

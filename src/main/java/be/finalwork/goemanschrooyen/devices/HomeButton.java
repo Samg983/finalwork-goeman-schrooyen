@@ -28,7 +28,7 @@ public class HomeButton implements Model {
 
     private boolean isEmpty = true;
     private RedirectView rv;
-    private int counter;
+    private int counter = 0;
     
     private List<PropertyChangeListener> listener = new ArrayList<PropertyChangeListener>();
 
@@ -58,7 +58,7 @@ public class HomeButton implements Model {
     }
 
     public HomeButton() {
-        this.counter = 0;
+      
         
 
         // create gpio controller
@@ -81,9 +81,9 @@ public class HomeButton implements Model {
                 }
 
                 if (event.getState() == PinState.LOW) {
-
-                    counter = counter + 1;
-                    setCounter(counter);
+                   
+                    
+                    setCounter(counter + 1);
                     System.out.println("Pinstate LOW:" + isEmpty + ". Counter: " + counter);
 
                 }

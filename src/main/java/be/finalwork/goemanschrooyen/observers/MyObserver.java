@@ -15,19 +15,23 @@ import java.beans.PropertyChangeListener;
  * @author SamGoeman
  */
 public class MyObserver implements PropertyChangeListener {
+
     public MyObserver(Model model) {
         model.addChangeListener(this);
     }
-
+    
     @Override
     public void propertyChange(PropertyChangeEvent e) {
         System.out.println("Changed property: " + e.getPropertyName() + " [old -> "
-            + e.getOldValue() + "] | [new -> " + e.getNewValue() +"]");
+                + e.getOldValue() + "] | [new -> " + e.getNewValue() + "]");
         
-        if(e.getPropertyName().equals("counterButton")){
+        if (e.getPropertyName().equals("counterButton")) {
             rapport.setRapportCounter((int) e.getNewValue());
+        }        
+        
+        if (e.getPropertyName().equals("TempLinks")) {
+            rapport.setTemperatuurLinks((double) e.getNewValue());
         }
     }
-    
     
 }

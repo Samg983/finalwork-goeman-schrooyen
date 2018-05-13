@@ -12,6 +12,7 @@ package be.finalwork.goemanschrooyen.rapport;
 public class Rapport {
     private int rapportCounter;
     private int joyStickX;
+    private double temperatuurLinks, temperatuurRechts;
     
     public Rapport(){
         
@@ -32,4 +33,22 @@ public class Rapport {
     public void setJoyStickX(int joyStickX){
         this.joyStickX = joyStickX;
     }
+
+    public double getTemperatuurLinks() {
+        return temperatuurLinks;
+    }
+
+    public void setTemperatuurLinks(double temperatuurLinks) {
+        this.temperatuurLinks = temperatuurLinks;
+    }
+
+    public double getTemperatuurRechts() {
+        return temperatuurRechts;
+    }
+
+    public void setTemperatuurRechts(double temperatuurRechts) {
+        this.temperatuurRechts = temperatuurRechts;
+    }
+    
+    
 }

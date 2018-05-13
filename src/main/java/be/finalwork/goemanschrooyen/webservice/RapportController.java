@@ -42,8 +42,6 @@ public class RapportController {
 
     @RequestMapping("/getRapport")
     public Rapport getRapport() {
-
-        
         return rapport;
     }
 

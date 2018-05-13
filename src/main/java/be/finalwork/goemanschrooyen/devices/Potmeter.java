@@ -76,10 +76,10 @@ public class Potmeter implements Runnable {
         //System.out.println("Potmeter read value");
         
         do {
-            int pot = this.readValue();
-            if (KlimaatDao.getKlimaatById(1).getTemperatuurLinks() != pot) {
+            int potVal = this.readValue();
+            if (KlimaatDao.getKlimaatById(1).getTemperatuurLinks() != potVal) {
                 System.out.println("NOT SAME");
-                Runnable r = new TempThread(pot);
+                Runnable r = new TempThread(potVal);
                 new Thread(r).start();
             } else {
                 System.out.println("SAME");

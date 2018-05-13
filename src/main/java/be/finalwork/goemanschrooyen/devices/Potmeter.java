@@ -73,8 +73,9 @@ public class Potmeter implements Runnable {
     @Override
     public void run() {
         //System.out.println("Potmeter read value");
-        int pot = 0;
+        
         do {
+            int pot = this.readValue();
             if (KlimaatDao.getKlimaatById(1).getTemperatuurLinks() != pot) {
                 System.out.println("NOT SAME");
                 Runnable r = new TempThread(pot);

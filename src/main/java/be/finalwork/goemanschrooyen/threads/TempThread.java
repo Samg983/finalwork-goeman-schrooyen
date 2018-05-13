@@ -23,6 +23,6 @@ public class TempThread implements Runnable{
     public void run(){
         Klimaat klimaat = KlimaatDao.getKlimaatById(1);
         klimaat.setTemperatuurLinks(this.value);
-        KlimaatDao.updateKlimaat(klimaat);   
+        KlimaatDao.updateKlimaat(klimaat);    
     }
 }

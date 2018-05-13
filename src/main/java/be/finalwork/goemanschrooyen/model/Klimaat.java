@@ -36,7 +36,7 @@ public class Klimaat implements Model{
     }
 
     public void setTemperatuurLinks(double temperatuurLinks) {
-        this.temperatuurLinks = temperatuurLinks;
+        notifyListeners(this, "TempLinks", this.temperatuurLinks, this.temperatuurLinks = temperatuurLinks); 
     }
 
     public double getTemperatuurRechts() {
@@ -106,30 +106,30 @@ public class Klimaat implements Model{
 
     @Override
     public void notifyListeners(Object object, String property, double oldValue, double newValue) {
-        for (PropertyChangeListener name : listener) {
+        listener.forEach((name) -> {
             name.propertyChange(new PropertyChangeEvent(this, property, oldValue, newValue));
-        }
+        });
     }
 
     @Override
     public void notifyListeners(Object object, String property, int oldValue, int newValue) {
-        for (PropertyChangeListener name : listener) {
+        listener.forEach((name) -> {
             name.propertyChange(new PropertyChangeEvent(this, property, oldValue, newValue));
-        }
+        });
     }
 
     @Override
     public void notifyListeners(Object object, String property, String oldValue, String newValue) {
-        for (PropertyChangeListener name : listener) {
+        listener.forEach((name) -> {
             name.propertyChange(new PropertyChangeEvent(this, property, oldValue, newValue));
-        }
+        });
     }
 
     @Override
     public void notifyListeners(Object object, String property, boolean oldValue, boolean newValue) {
-       for (PropertyChangeListener name : listener) {
+        listener.forEach((name) -> {
             name.propertyChange(new PropertyChangeEvent(this, property, oldValue, newValue));
-        }
+        });
     }
 
     @Override

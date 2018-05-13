@@ -5,16 +5,13 @@
  */
 package be.finalwork.goemanschrooyen.devices;
 
-import be.finalwork.goemanschrooyen.dao.KlimaatDao;
-import be.finalwork.goemanschrooyen.threads.TempThread;
+
 import com.pi4j.io.i2c.I2CBus;
 import com.pi4j.io.i2c.I2CDevice;
 import com.pi4j.io.i2c.I2CFactory;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observer;
+
 
 /**
  *

@@ -15,8 +15,10 @@ import java.io.IOException;
  *
  * @author SamGoeman
  */
-public class JoyStick {
+public class JoyStick implements Runnable {
+
     private int x, y, down;
+    private I2CDevice device;
 
     public int getX() {
         return x;
@@ -41,17 +43,60 @@ public class JoyStick {
     public void setDown(int down) {
         this.down = down;
     }
-    
-   
-    
+
+    @Override
+    public void run() {
+        int i = 0;
+        try {
+            do {
+
+                int btn = device.read(0b00000010);
+                int x = device.read(0b00000001);
+                int y = device.read(0b00000000);
+                //int pot = device.read(0b00000011);
+
+                if (x < 10) {
+                    System.out.println("left: " + x);
+                } else if (x > 250) {
+                    System.out.println("right: " + x);
+                }
+                if (y < 10) {
+                    System.out.println("down: " + y);
+                } else if (y > 250) {
+                    System.out.println("up: " + y);
+                }
+                if (btn == 0) {
+                    System.out.println("Button: " + btn);
+                }
+                Thread.sleep(1000);
+                /*if(KlimaatDao.getKlimaatById(1).getTemperatuurLinks() != pot){
+                        System.out.println("NOT SAME");
+                     Runnable r = new TempThread(pot);
+                    new Thread(r).start();
+                    } else {
+                        System.out.println("SAME");
+                    }*/
+
+//                System.out.println("x: " + x);
+//                System.out.println("y: " + y);
+//                System.out.println("Btn: " + btn);
+                //System.out.println("Pot: " + pot);
+                i++;
+            } while (true);
+        } catch (InterruptedException e) {
+
+        } catch (IOException e) {
+
+        }
+
+    }
+
     public JoyStick() {
         try {
             I2CBus i2c = I2CFactory.getInstance(I2CBus.BUS_1);
 
-            I2CDevice device = i2c.getDevice(0b1001000);
-            
-           
-            
+            this.device = i2c.getDevice(0b1001000);
+
             /*device.write((byte) 0b1100011);
                   System.out.println("written");
                   Thread.sleep(500);
@@ -62,49 +107,11 @@ public class JoyStick {
                     
                     klimaat.setTemperatuur(value);
                     KlimaatDao.updateKlimaat(klimaat);*/
-            int i = 0;
-//            do {
-//
-//                int btn = device.read(0b00000010);
-//                int x = device.read(0b00000001);
-//                int y = device.read(0b00000000);
-//                //int pot = device.read(0b00000011);
-//
-//                if (x < 10) {
-//                    System.out.println("left: " + x);
-//                } else if (x > 250) {
-//                    System.out.println("right: " + x);
-//                }
-//                if (y < 10) {
-//                    System.out.println("down: " + y);
-//                } else if (y > 250) {
-//                    System.out.println("up: " + y);
-//                }
-//                if (btn == 0) {
-//                    System.out.println("Button: " + btn);
-//                }
-//                Thread.sleep(1000);
-//                /*if(KlimaatDao.getKlimaatById(1).getTemperatuurLinks() != pot){
-//                        System.out.println("NOT SAME");
-//                     Runnable r = new TempThread(pot);
-//                    new Thread(r).start();
-//                    } else {
-//                        System.out.println("SAME");
-//                    }*/
-//
-////                System.out.println("x: " + x);
-////                System.out.println("y: " + y);
-////                System.out.println("Btn: " + btn);
-//                //System.out.println("Pot: " + pot);
-//
-//                i++;
-//            } while (true);
-
         } catch (IOException e) {
             System.out.println(e);
         } catch (UnsupportedBusNumberException e) {
             System.out.println(e);
-        } 
+        }
 
     }
 }

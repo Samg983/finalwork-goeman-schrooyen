@@ -13,7 +13,6 @@ import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
 import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 import com.pi4j.io.gpio.event.GpioPinListenerDigital;
-import java.beans.PropertyChangeListener;
 import org.springframework.web.servlet.view.RedirectView;
 
 /**

@@ -19,8 +19,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/Rapport")
 public class RapportController {
 
-    private HomeButton button = new HomeButton();
-    private JoyStick joystick = new JoyStick();
+    private static HomeButton button;
+    private static JoyStick joystick;
+    
+    public static void main(String[] args) {
+        button = new HomeButton();
+        joystick = new JoyStick();
+        
+        Thread joystickThread = new Thread(joystick);
+        joystickThread.start();
+
+    }
+    
     
     
     @RequestMapping("/getRapport")

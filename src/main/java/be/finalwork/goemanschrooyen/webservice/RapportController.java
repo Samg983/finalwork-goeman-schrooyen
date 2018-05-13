@@ -22,14 +22,14 @@ public class RapportController {
     private static HomeButton button;
     private static JoyStick joystick;
 
-    public static void main(String[] args) {
+    public RapportController() {
         button = new HomeButton();
         joystick = new JoyStick();
 
         Thread joystickThread = new Thread(joystick);
         joystickThread.start();
-
     }
+
 
     @RequestMapping("/getRapport")
     public Rapport getRapport() {

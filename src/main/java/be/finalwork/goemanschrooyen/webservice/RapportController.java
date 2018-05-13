@@ -7,6 +7,7 @@ package be.finalwork.goemanschrooyen.webservice;
 
 import be.finalwork.goemanschrooyen.devices.HomeButton;
 import be.finalwork.goemanschrooyen.devices.JoyStick;
+import be.finalwork.goemanschrooyen.devices.Potmeter;
 import be.finalwork.goemanschrooyen.rapport.Rapport;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,23 +22,22 @@ public class RapportController {
 
     private static HomeButton button;
     private static JoyStick joystick;
+     private static Potmeter pm;
 
     public RapportController() {
-        button = new HomeButton();
-        joystick = new JoyStick();
-
-        Thread joystickThread = new Thread(joystick);
-        joystickThread.start();
+        //button = new HomeButton();
+        //joystick = new JoyStick();
+        pm = new Potmeter();
+        
+        /*Thread joystickThread = new Thread(joystick);
+        joystickThread.start();*/
     }
 
 
     @RequestMapping("/getRapport")
     public Rapport getRapport() {
         Rapport rapport = new Rapport();
-        System.out.println("BUTTON");
-
-        System.out.println(button);
-
+   
         rapport.setRapportCounter(button.getCounter());
         //rapport.setJoyStickX(5);
         return rapport;

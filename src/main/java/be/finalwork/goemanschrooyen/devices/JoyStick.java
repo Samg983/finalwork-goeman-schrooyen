@@ -15,7 +15,7 @@ import java.io.IOException;
  *
  * @author SamGoeman
  */
-public class JoyStick implements Runnable {
+public class JoyStick  {
 
     private int x, y, down;
     private I2CDevice device;
@@ -44,10 +44,18 @@ public class JoyStick implements Runnable {
         this.down = down;
     }
 
-    @Override
-    public void run() {
+ 
+
+    public JoyStick() {
         try {
-            do {
+            I2CBus i2c = I2CFactory.getInstance(I2CBus.BUS_1);
+
+            this.device = i2c.getDevice(0b1001000);
+            System.out.println("DEVICE");
+
+            System.out.println(device);
+            
+              do {
 
                 int btn = device.read(0b00000010);
                 int x = device.read(0b00000001);
@@ -81,22 +89,6 @@ public class JoyStick implements Runnable {
 //                System.out.println("Btn: " + btn);
                 //System.out.println("Pot: " + pot);
             } while (true);
-        } catch (InterruptedException e) {
-            System.out.println(e);
-        } catch (IOException e) {
-            System.out.println(e);
-        }
-
-    }
-
-    public JoyStick() {
-        try {
-            I2CBus i2c = I2CFactory.getInstance(I2CBus.BUS_1);
-
-            this.device = i2c.getDevice(0b1001000);
-            System.out.println("DEVICE");
-
-            System.out.println(device);
             /*device.write((byte) 0b1100011);
                   System.out.println("written");
                   Thread.sleep(500);
@@ -111,6 +103,8 @@ public class JoyStick implements Runnable {
             System.out.println(e);
         } catch (UnsupportedBusNumberException e) {
             System.out.println(e);
+        } catch(InterruptedException e) {
+            
         }
 
     }

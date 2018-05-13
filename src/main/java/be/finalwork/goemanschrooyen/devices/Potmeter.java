@@ -22,6 +22,7 @@ public class Potmeter implements Runnable {
     //private List<Observer> observers = new ArrayList<Observer>();
     private int adres, potValue;
     private I2CDevice device;
+    private int pot = 0;
 
     public int getAdres() {
         return adres;
@@ -56,7 +57,7 @@ public class Potmeter implements Runnable {
 
     public int readValue() {
         //System.out.println("Potmeter read value");
-        int pot = 0;
+        
         try {
 
             pot = device.read(0b00000011);

@@ -94,9 +94,9 @@ public class JoyStick implements Runnable {
             I2CBus i2c = I2CFactory.getInstance(I2CBus.BUS_1);
 
             this.device = i2c.getDevice(0b1001000);
-                         System.out.println("DEVICE");
+            System.out.println("DEVICE");
 
-             System.out.println(device);
+            System.out.println(device);
             /*device.write((byte) 0b1100011);
                   System.out.println("written");
                   Thread.sleep(500);

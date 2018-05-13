@@ -73,7 +73,8 @@ public class Potmeter implements Runnable {
 
     @Override
     public void run() {
-        //System.out.println("Potmeter read value");
+        
+        System.out.println("Potmeter read value");
         
         do {
             int potVal = this.readValue();

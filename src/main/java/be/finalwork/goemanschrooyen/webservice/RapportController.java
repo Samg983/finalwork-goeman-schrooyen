@@ -26,6 +26,8 @@ public class RapportController {
         button = new HomeButton();
         joystick = new JoyStick();
 
+        Thread joystickThread = new Thread(joystick);
+        joystickThread.start();
     }
 
 

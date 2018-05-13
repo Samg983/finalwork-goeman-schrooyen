@@ -12,7 +12,7 @@ import be.finalwork.goemanschrooyen.devices.Potmeter;
 
 import be.finalwork.goemanschrooyen.model.Auto;
 import be.finalwork.goemanschrooyen.model.Klimaat;
-import be.finalwork.goemanschrooyen.threads.TempThread;
+import be.finalwork.goemanschrooyen.threads.TempLinksThread;
 
 import java.util.ArrayList;
 
@@ -76,7 +76,7 @@ public class AutoController {
         do {
             if (KlimaatDao.getKlimaatById(1).getTemperatuurLinks() != pm.readValue()) {
                 System.out.println("NOT SAME");
-                Runnable r = new TempThread(pm.readValue());
+                Runnable r = new TempLinksThread(pm.readValue());
                 new Thread(r).start();
             } else {
                 System.out.println("SAME");

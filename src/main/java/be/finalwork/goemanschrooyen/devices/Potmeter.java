@@ -6,7 +6,7 @@
 package be.finalwork.goemanschrooyen.devices;
 
 import be.finalwork.goemanschrooyen.dao.KlimaatDao;
-import be.finalwork.goemanschrooyen.threads.TempThread;
+import be.finalwork.goemanschrooyen.threads.TempLinksThread;
 import com.pi4j.io.i2c.I2CBus;
 import com.pi4j.io.i2c.I2CDevice;
 import com.pi4j.io.i2c.I2CFactory;
@@ -80,7 +80,7 @@ public class Potmeter implements Runnable {
             int potVal = this.readValue();
             if (KlimaatDao.getKlimaatById(1).getTemperatuurLinks() != potVal) {
                 System.out.println("NOT SAME");
-                Runnable r = new TempThread(potVal);
+                Runnable r = new TempLinksThread(potVal);
                 new Thread(r).start();
             } else {
                 System.out.println("SAME");

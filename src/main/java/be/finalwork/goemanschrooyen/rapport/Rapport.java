@@ -10,21 +10,22 @@ package be.finalwork.goemanschrooyen.rapport;
  * @author SamGoeman
  */
 public class Rapport {
-    private int rapportCounter;
+    private int buttonCounter;
     private int joyStickX;
     private double temperatuurLinks, temperatuurRechts;
     
     public Rapport(){
         
     }
-    
-    public int getRapportCounter(){
-        return rapportCounter;
+
+    public int getButtonCounter() {
+        return buttonCounter;
+    }
+
+    public void setButtonCounter(int buttonCounter) {
+        this.buttonCounter = buttonCounter;
     }
     
-    public void setRapportCounter(int rapportCounter){
-        this.rapportCounter = rapportCounter;
-    }
     
     public int getJoyStickX(){
         return this.joyStickX;

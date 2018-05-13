@@ -12,17 +12,17 @@ import be.finalwork.goemanschrooyen.model.Klimaat;
  *
  * @author root
  */
-public class TempThread implements Runnable{
-    private double value;
+public class TempRechtsThread implements Runnable{
+    private final double value;
     
-    public TempThread(double p){
+    public TempRechtsThread(double p){
         this.value = p;
     }
     
     @Override
     public void run(){
         Klimaat klimaat = KlimaatDao.getKlimaatById(1);
-        klimaat.setTemperatuurLinks(this.value);
+        klimaat.setTemperatuurRechts(this.value);
         KlimaatDao.updateKlimaat(klimaat);    
     }
 }

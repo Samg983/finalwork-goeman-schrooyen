@@ -22,26 +22,25 @@ public class RapportController {
 
     private static HomeButton button;
     private static JoyStick joystick;
-     private static Potmeter pm;
+    private static Potmeter pm;
+    public static Rapport rapport;
 
     public RapportController() {
+        rapport = new Rapport();
         //button = new HomeButton();
         //joystick = new JoyStick();
         pm = new Potmeter();
-        
-       Thread potmeterThread = new Thread(pm);
-       potmeterThread.start();
+
+        Thread potmeterThread = new Thread(pm);
+        potmeterThread.start();
         /*Thread joystickThread = new Thread(joystick);
         joystickThread.start();*/
     }
 
-
     @RequestMapping("/getRapport")
     public Rapport getRapport() {
-        Rapport rapport = new Rapport();
-   
-        rapport.setRapportCounter(button.getCounter());
-        //rapport.setJoyStickX(5);
+
+        
         return rapport;
     }
 

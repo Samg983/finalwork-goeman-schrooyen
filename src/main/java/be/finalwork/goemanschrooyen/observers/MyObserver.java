@@ -6,6 +6,7 @@
 package be.finalwork.goemanschrooyen.observers;
 
 import be.finalwork.goemanschrooyen.model.Model;
+import static be.finalwork.goemanschrooyen.webservice.RapportController.rapport;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
@@ -19,9 +20,13 @@ public class MyObserver implements PropertyChangeListener {
     }
 
     @Override
-    public void propertyChange(PropertyChangeEvent event) {
-        System.out.println("Changed property: " + event.getPropertyName() + " [old -> "
-            + event.getOldValue() + "] | [new -> " + event.getNewValue() +"]");
+    public void propertyChange(PropertyChangeEvent e) {
+        System.out.println("Changed property: " + e.getPropertyName() + " [old -> "
+            + e.getOldValue() + "] | [new -> " + e.getNewValue() +"]");
+        
+        if(e.getPropertyName().equals("counterButton")){
+            rapport.setRapportCounter((int) e.getNewValue());
+        }
     }
     
     

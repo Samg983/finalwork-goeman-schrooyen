@@ -5,6 +5,7 @@
  */
 package be.finalwork.goemanschrooyen.devices;
 
+import be.finalwork.goemanschrooyen.model.Model;
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalInput;
@@ -13,17 +14,23 @@ import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
 import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 import com.pi4j.io.gpio.event.GpioPinListenerDigital;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.web.servlet.view.RedirectView;
 
 /**
  *
  * @author SamGoeman
  */
-public class HomeButton {
+public class HomeButton implements Model {
 
     private boolean isEmpty = true;
     private RedirectView rv;
     private int counter;
+    
+    private List<PropertyChangeListener> listener = new ArrayList<PropertyChangeListener>();
 
     public boolean isIsEmpty() {
         return isEmpty;
@@ -46,7 +53,7 @@ public class HomeButton {
     }
 
     public void setCounter(int counter) {
-        this.counter = counter;
+        notifyListeners(this, "counterButton", this.counter, this.counter = counter); 
     }
 
     public HomeButton() {
@@ -86,9 +93,47 @@ public class HomeButton {
         });
     }
 
+    
+    
+    
+    
+    
     /*private RedirectView localRedirect() {
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("http://samgoeman.com/rq/");
         return redirectView;
     }*/
+
+    @Override
+    public void notifyListeners(Object object, String property, double oldValue, double newValue) {
+        listener.forEach((name) -> {
+            name.propertyChange(new PropertyChangeEvent(this, property, oldValue, newValue));
+        });
+    }
+
+    @Override
+    public void notifyListeners(Object object, String property, int oldValue, int newValue) {
+        listener.forEach((name) -> {
+            name.propertyChange(new PropertyChangeEvent(this, property, oldValue, newValue));
+        });
+    }
+
+    @Override
+    public void notifyListeners(Object object, String property, String oldValue, String newValue) {
+        listener.forEach((name) -> {
+            name.propertyChange(new PropertyChangeEvent(this, property, oldValue, newValue));
+        });
+    }
+
+    @Override
+    public void notifyListeners(Object object, String property, boolean oldValue, boolean newValue) {
+         listener.forEach((name) -> {
+            name.propertyChange(new PropertyChangeEvent(this, property, oldValue, newValue));
+        });
+    }
+
+    @Override
+    public void addChangeListener(PropertyChangeListener newListener) {
+         listener.add(newListener);
+    }
 }

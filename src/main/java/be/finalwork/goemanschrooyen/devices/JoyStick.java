@@ -63,50 +63,48 @@ public class JoyStick {
                     klimaat.setTemperatuur(value);
                     KlimaatDao.updateKlimaat(klimaat);*/
             int i = 0;
-            do {
-
-                int btn = device.read(0b00000010);
-                int x = device.read(0b00000001);
-                int y = device.read(0b00000000);
-                //int pot = device.read(0b00000011);
-
-                if (x < 10) {
-                    System.out.println("left: " + x);
-                } else if (x > 250) {
-                    System.out.println("right: " + x);
-                }
-                if (y < 10) {
-                    System.out.println("down: " + y);
-                } else if (y > 250) {
-                    System.out.println("up: " + y);
-                }
-                if (btn == 0) {
-                    System.out.println("Button: " + btn);
-                }
-                Thread.sleep(1000);
-                /*if(KlimaatDao.getKlimaatById(1).getTemperatuurLinks() != pot){
-                        System.out.println("NOT SAME");
-                     Runnable r = new TempThread(pot);
-                    new Thread(r).start();
-                    } else {
-                        System.out.println("SAME");
-                    }*/
-
-//                System.out.println("x: " + x);
-//                System.out.println("y: " + y);
-//                System.out.println("Btn: " + btn);
-                //System.out.println("Pot: " + pot);
-
-                i++;
-            } while (true);
+//            do {
+//
+//                int btn = device.read(0b00000010);
+//                int x = device.read(0b00000001);
+//                int y = device.read(0b00000000);
+//                //int pot = device.read(0b00000011);
+//
+//                if (x < 10) {
+//                    System.out.println("left: " + x);
+//                } else if (x > 250) {
+//                    System.out.println("right: " + x);
+//                }
+//                if (y < 10) {
+//                    System.out.println("down: " + y);
+//                } else if (y > 250) {
+//                    System.out.println("up: " + y);
+//                }
+//                if (btn == 0) {
+//                    System.out.println("Button: " + btn);
+//                }
+//                Thread.sleep(1000);
+//                /*if(KlimaatDao.getKlimaatById(1).getTemperatuurLinks() != pot){
+//                        System.out.println("NOT SAME");
+//                     Runnable r = new TempThread(pot);
+//                    new Thread(r).start();
+//                    } else {
+//                        System.out.println("SAME");
+//                    }*/
+//
+////                System.out.println("x: " + x);
+////                System.out.println("y: " + y);
+////                System.out.println("Btn: " + btn);
+//                //System.out.println("Pot: " + pot);
+//
+//                i++;
+//            } while (true);
 
         } catch (IOException e) {
             System.out.println(e);
         } catch (UnsupportedBusNumberException e) {
             System.out.println(e);
-        } catch (InterruptedException e) {
-            System.out.println(e);
-        }
+        } 
 
     }
 }

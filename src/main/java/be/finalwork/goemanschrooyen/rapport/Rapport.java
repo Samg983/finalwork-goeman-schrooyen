@@ -10,7 +10,7 @@ package be.finalwork.goemanschrooyen.rapport;
  * @author SamGoeman
  */
 public class Rapport {
-    private int buttonCounter;
+    private int buttonCounter, oldButtonCounter;
     private int joyStickX;
     private double temperatuurLinks, temperatuurRechts;
     
@@ -25,7 +25,14 @@ public class Rapport {
     public void setButtonCounter(int buttonCounter) {
         this.buttonCounter = buttonCounter;
     }
-    
+
+    public int getOldButtonCounter() {
+        return oldButtonCounter;
+    }
+
+    public void setOldButtonCounter(int oldButtonCounter) {
+        this.oldButtonCounter = oldButtonCounter;
+    }
     
     public int getJoyStickX(){
         return this.joyStickX;

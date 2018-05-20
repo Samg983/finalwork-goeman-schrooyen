@@ -26,6 +26,7 @@ public class MyObserver implements PropertyChangeListener {
                 + e.getOldValue() + "] | [new -> " + e.getNewValue() + "]");
         
         if (e.getPropertyName().equals("counterButton")) {
+            rapport.setOldButtonCounter((int) e.getOldValue());
             rapport.setButtonCounter((int) e.getNewValue());
         }        
         

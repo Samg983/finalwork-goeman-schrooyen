@@ -53,7 +53,7 @@ public class HomeButton implements Model {
     }
 
     public void setCounter(int counter) {
-         System.out.println("setCounter");
+        System.out.println("setCounter");
         notifyListeners(this, "counterButton", this.counter, this.counter = counter); 
     }
 

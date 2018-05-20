@@ -45,5 +45,11 @@ public class RapportController {
     public Rapport getRapport() {
         return rapport;
     }
+    
+    @RequestMapping("/setZero")
+    public void setZero() {
+        rapport.setButtonCounter(0);
+    }
+    
 
 }

@@ -54,7 +54,7 @@ public class JoyStick implements Runnable {
                 int y = device.read(0b00000000);
                
 
-                if (x < 10) {
+               /* if (x < 10) {
                     System.out.println("left: " + x);
                 } else if (x > 250) {
                     System.out.println("right: " + x);
@@ -66,7 +66,7 @@ public class JoyStick implements Runnable {
                 }
                 if (btn == 0) {
                     System.out.println("Button: " + btn);
-                }
+                }*/
                 Thread.sleep(1000);
         
                System.out.println("x: " + x);

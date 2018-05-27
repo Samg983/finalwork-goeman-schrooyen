@@ -52,7 +52,7 @@ public class JoyStick implements Runnable {
                 int btn = device.read(0b00000010);
                 int x = device.read(0b00000001);
                 int y = device.read(0b00000000);
-                //int pot = device.read(0b00000011);
+               
 
                 if (x < 10) {
                     System.out.println("left: " + x);
@@ -68,18 +68,11 @@ public class JoyStick implements Runnable {
                     System.out.println("Button: " + btn);
                 }
                 Thread.sleep(1000);
-                /*if(KlimaatDao.getKlimaatById(1).getTemperatuurLinks() != pot){
-                        System.out.println("NOT SAME");
-                     Runnable r = new TempThread(pot);
-                    new Thread(r).start();
-                    } else {
-                        System.out.println("SAME");
-                    }*/
-
-//                System.out.println("x: " + x);
-//                System.out.println("y: " + y);
-//                System.out.println("Btn: " + btn);
-                //System.out.println("Pot: " + pot);
+        
+               System.out.println("x: " + x);
+               System.out.println("y: " + y);
+               System.out.println("Btn: " + btn);
+                
             } while (true);
         } catch (InterruptedException e) {
             System.out.println(e);

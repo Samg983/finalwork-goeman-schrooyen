@@ -30,15 +30,15 @@ public class RapportController {
         rapport = new Rapport();
         
        /* button = new HomeButton();
-        MyObserver buttonObserver = new MyObserver(button);
+        MyObserver buttonObserver = new MyObserver(button);*/
     
         pm = new Potmeter();
         Thread potmeterThread = new Thread(pm);
-        potmeterThread.start();*/
+        potmeterThread.start();
         
-        joystick = new JoyStick();
+        /*joystick = new JoyStick();
         Thread joystickThread = new Thread(joystick);
-        joystickThread.start();
+        joystickThread.start();*/
     }
 
     @RequestMapping("/getRapport")

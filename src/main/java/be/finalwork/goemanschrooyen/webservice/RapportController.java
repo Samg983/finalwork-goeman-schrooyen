@@ -29,8 +29,8 @@ public class RapportController {
     public RapportController() {
         rapport = new Rapport();
         
-       /*button = new HomeButton();
-        MyObserver buttonObserver = new MyObserver(button);*/
+       button = new HomeButton();
+        MyObserver buttonObserver = new MyObserver(button);
     
         /*pm = new Potmeter();
         Thread potmeterThread = new Thread(pm);

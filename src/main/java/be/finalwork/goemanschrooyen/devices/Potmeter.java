@@ -47,8 +47,7 @@ public class Potmeter implements Runnable {
 
             this.device = i2c.getDevice(0b1001000);
 
-        } catch (IOException e) {
-            System.out.println(e);
+        
         } catch (I2CFactory.UnsupportedBusNumberException e) {
             System.out.println(e);
         }
@@ -64,7 +63,7 @@ public class Potmeter implements Runnable {
             System.out.println(pot);
             Thread.sleep(100);
 
-        } catch (InterruptedException | IOException e) {
+        } catch (InterruptedException e) {
             System.out.println(e);
         }
 

@@ -60,7 +60,7 @@ public class HomeButton implements Model {
     public HomeButton() {
       
         
-
+        System.out.println("Button aangemaakt");
         // create gpio controller
         final GpioController gpio = GpioFactory.getInstance();
 
@@ -75,7 +75,7 @@ public class HomeButton implements Model {
             @Override
             public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event) {
                 // display pin state on console
-
+                  System.out.println("Listener aangemaakt");
                 if (event.getState() == PinState.HIGH) {
                     System.out.println("Pinstate HIGH:" + isEmpty);
                 }

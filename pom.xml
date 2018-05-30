@@ -53,6 +53,17 @@
             <id>spring-releases</id>
             <url>https://repo.spring.io/libs-release</url>
         </repository>
+        
+	<repository>
+		<id>oss-snapshots-repo</id>
+		<name>Sonatype OSS Maven Repository</name>
+		<url>https://oss.sonatype.org/content/groups/public</url>
+		<snapshots>
+			<enabled>true</enabled>
+			<updatePolicy>always</updatePolicy>
+		</snapshots>
+	</repository>
+
     </repositories>
     <pluginRepositories>
         <pluginRepository>

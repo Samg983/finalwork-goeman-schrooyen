@@ -9,6 +9,7 @@ import be.finalwork.goemanschrooyen.model.Model;
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalInput;
+import com.pi4j.io.gpio.Pin;
 import com.pi4j.io.gpio.PinPullResistance;
 import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
@@ -27,8 +28,12 @@ import org.springframework.web.servlet.view.RedirectView;
 public class HomeButton implements Model {
 
     private boolean isEmpty = true;
-    private RedirectView rv;
+
     private int counter = 0;
+    
+    private Pin pin;
+    
+    private boolean isTouch;
     
     private List<PropertyChangeListener> listener = new ArrayList<PropertyChangeListener>();
 
@@ -40,14 +45,23 @@ public class HomeButton implements Model {
         this.isEmpty = isEmpty;
     }
 
-    public RedirectView getRv() {
-        return rv;
+    public Pin getPin() {
+        return pin;
     }
 
-    public void setRv(RedirectView rv) {
-        this.rv = rv;
+    public void setPin(Pin pin) {
+        this.pin = pin;
     }
 
+    public boolean getIsTouch() {
+        return isTouch;
+    }
+
+    public void setIsTouch(boolean isTouch) {
+        this.isTouch = isTouch;
+    }
+
+   
     public int getCounter() {
         return this.counter;
     }
@@ -57,15 +71,18 @@ public class HomeButton implements Model {
         notifyListeners(this, "counterButton", this.counter, this.counter = counter); 
     }
 
-    public HomeButton() {
+    public HomeButton(Pin pin, boolean touch) {
       
+        this.pin = pin;
+        this.isTouch = touch;
         
         System.out.println("Button aangemaakt");
         // create gpio controller
         final GpioController gpio = GpioFactory.getInstance();
 
         // provision gpio pin #02 as an input pin with its internal pull down resistor enabled
-        final GpioPinDigitalInput myButton = gpio.provisionDigitalInputPin(RaspiPin.GPIO_06 , PinPullResistance.PULL_DOWN);
+        final GpioPinDigitalInput myButton = gpio.provisionDigitalInputPin(pin, PinPullResistance.PULL_DOWN);
+        
 
         // set shutdown state for this input pin
         myButton.setShutdownOptions(true);
@@ -78,11 +95,14 @@ public class HomeButton implements Model {
                   System.out.println("Listener aangemaakt");
                 if (event.getState() == PinState.HIGH) {
                     System.out.println("Pinstate HIGH:" + isEmpty);
+                    if(touch){
+                        System.out.println("TOUCH");
+                        setCounter(counter + 1);
+                    }
                 }
 
                 if (event.getState() == PinState.LOW) {
                    
-                    
                     setCounter(counter + 1);
                     System.out.println("Pinstate LOW:" + isEmpty + ". Counter: " + counter);
 

@@ -10,6 +10,7 @@ import be.finalwork.goemanschrooyen.devices.JoyStick;
 import be.finalwork.goemanschrooyen.devices.Potmeter;
 import be.finalwork.goemanschrooyen.observers.MyObserver;
 import be.finalwork.goemanschrooyen.rapport.Rapport;
+import com.pi4j.io.gpio.RaspiPin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/Rapport")
 public class RapportController {
 
-    private static HomeButton button;
+    private static HomeButton button, touchButton;
     private static JoyStick joystick;
     private static Potmeter pm;
     public static Rapport rapport;
@@ -29,8 +30,11 @@ public class RapportController {
     public RapportController() {
         rapport = new Rapport();
         
-       button = new HomeButton();
+        button = new HomeButton(RaspiPin.GPIO_01, false);
         MyObserver buttonObserver = new MyObserver(button);
+        
+        touchButton = new HomeButton(RaspiPin.GPIO_06, true);
+        MyObserver touchButtonObserver = new MyObserver(touchButton);
     
         pm = new Potmeter();
         Thread potmeterThread = new Thread(pm);

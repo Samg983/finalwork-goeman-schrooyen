@@ -30,11 +30,13 @@ public class HomeButton implements Model {
     private boolean isEmpty = true;
 
     private int counter = 0;
-    
+
+    private int touchCounter = 0;
+
     private Pin pin;
-    
+
     private boolean isTouch;
-    
+
     private List<PropertyChangeListener> listener = new ArrayList<PropertyChangeListener>();
 
     public boolean isIsEmpty() {
@@ -61,28 +63,34 @@ public class HomeButton implements Model {
         this.isTouch = isTouch;
     }
 
-   
     public int getCounter() {
         return this.counter;
     }
 
     public void setCounter(int counter) {
         System.out.println("setCounter");
-        notifyListeners(this, "counterButton", this.counter, this.counter = counter); 
+        notifyListeners(this, "counterButton", this.counter, this.counter = counter);
+    }
+
+    public int getTouchCounter() {
+        return touchCounter;
+    }
+
+    public void setTouchCounter(int touchCounter) {
+        notifyListeners(this, "touchCounterButton", this.touchCounter, this.touchCounter = touchCounter);
     }
 
     public HomeButton(Pin pin, boolean touch) {
-      
+
         this.pin = pin;
         this.isTouch = touch;
-        
+
         System.out.println("Button aangemaakt");
         // create gpio controller
         final GpioController gpio = GpioFactory.getInstance();
 
         // provision gpio pin #02 as an input pin with its internal pull down resistor enabled
         final GpioPinDigitalInput myButton = gpio.provisionDigitalInputPin(pin, PinPullResistance.PULL_DOWN);
-        
 
         // set shutdown state for this input pin
         myButton.setShutdownOptions(true);
@@ -92,36 +100,27 @@ public class HomeButton implements Model {
             @Override
             public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event) {
                 // display pin state on console
-                  System.out.println("Listener aangemaakt");
+                System.out.println("Listener aangemaakt");
                 if (event.getState() == PinState.HIGH) {
                     System.out.println("Pinstate HIGH:" + isEmpty);
-                    if(touch){
+                    if (touch) {
                         System.out.println("TOUCH");
-                        setCounter(counter + 1);
+                        setTouchCounter(touchCounter + 1);
                     }
                 }
 
                 if (event.getState() == PinState.LOW) {
-                   
-                    setCounter(counter + 1);
                     System.out.println("Pinstate LOW:" + isEmpty + ". Counter: " + counter);
-
+                    if (touch) {
+                        setTouchCounter(touchCounter + 1);
+                    } else {
+                        setCounter(counter + 1);
+                    }
                 }
 
             }
         });
     }
-
-    
-    
-    
-    
-    
-    /*private RedirectView localRedirect() {
-        RedirectView redirectView = new RedirectView();
-        redirectView.setUrl("http://samgoeman.com/rq/");
-        return redirectView;
-    }*/
 
     @Override
     public void notifyListeners(Object object, String property, double oldValue, double newValue) {
@@ -146,13 +145,13 @@ public class HomeButton implements Model {
 
     @Override
     public void notifyListeners(Object object, String property, boolean oldValue, boolean newValue) {
-         listener.forEach((name) -> {
+        listener.forEach((name) -> {
             name.propertyChange(new PropertyChangeEvent(this, property, oldValue, newValue));
         });
     }
 
     @Override
     public void addChangeListener(PropertyChangeListener newListener) {
-         listener.add(newListener);
+        listener.add(newListener);
     }
 }

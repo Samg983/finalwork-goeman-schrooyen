@@ -26,9 +26,12 @@ public class MyObserver implements PropertyChangeListener {
                 + e.getOldValue() + "] | [new -> " + e.getNewValue() + "]");
         
         if (e.getPropertyName().equals("counterButton")) {
-            
             rapport.setButtonCounter((int) e.getNewValue());
-        }        
+        }    
+        
+        if (e.getPropertyName().equals("touchCounterButton")) {
+            rapport.setTouchButtonCounter((int) e.getNewValue());
+        } 
         
         if (e.getPropertyName().equals("TempLinks")) {
             rapport.setTemperatuurLinks((double) e.getNewValue());

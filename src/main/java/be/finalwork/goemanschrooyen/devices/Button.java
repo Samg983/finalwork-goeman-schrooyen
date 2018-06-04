@@ -25,7 +25,7 @@ import org.springframework.web.servlet.view.RedirectView;
  *
  * @author SamGoeman
  */
-public class HomeButton implements Model {
+public class Button implements Model {
 
     private boolean isEmpty = true;
 
@@ -80,7 +80,7 @@ public class HomeButton implements Model {
         notifyListeners(this, "touchCounterButton", this.touchCounter, this.touchCounter = touchCounter);
     }
 
-    public HomeButton(Pin pin, boolean touch) {
+    public Button(Pin pin, boolean touch) {
 
         this.pin = pin;
         this.isTouch = touch;

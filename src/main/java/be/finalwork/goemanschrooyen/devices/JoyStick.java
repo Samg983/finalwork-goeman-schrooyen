@@ -49,9 +49,9 @@ public class JoyStick implements Runnable {
         try {
             do {
 
-                int x = device.read(0b00000010);
+                int btn = device.read(0b00000010);
                 int y = device.read(0b00000001);
-                int btn = device.read(0b00000000);
+                int x = device.read(0b00000000);
                
 
                /* if (x < 10) {

@@ -49,7 +49,7 @@ public class JoyStick implements Runnable {
         try {
             do {
 
-                //int x = device.read(0b00000010);
+                int x = device.read(0b00000010);
                 int y = device.read(0b00000001);
                 int btn = device.read(0b00000000);
                
@@ -69,7 +69,7 @@ public class JoyStick implements Runnable {
                 }*/
                 Thread.sleep(1000);
         
-             //  System.out.println("x: " + x);
+                System.out.println("x: " + x);
                System.out.println("y: " + y);
                System.out.println("Btn: " + btn);
                 

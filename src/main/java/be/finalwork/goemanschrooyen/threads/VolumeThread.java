@@ -22,6 +22,7 @@ public class VolumeThread implements Runnable{
     
     @Override
     public void run(){
+        System.out.println("volumethread run");
         Media media = MediaDao.getMediaById(1);
         media.setVolume(this.value);
         MediaDao.updateMedia(media);    

@@ -6,6 +6,7 @@
 package be.finalwork.goemanschrooyen.dao;
 
 import be.finalwork.goemanschrooyen.model.Media;
+import be.finalwork.goemanschrooyen.observers.MyObserver;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -40,6 +41,7 @@ public class MediaDao {
             if (mijnResultset != null) {
                 mijnResultset.first();
                 resultaat = converteerHuidigeRijNaarObject(mijnResultset);
+                MyObserver observer = new MyObserver(resultaat);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

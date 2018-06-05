@@ -28,31 +28,32 @@ public class RapportController {
     public static Rapport rapport;
 
     public RapportController() {
+        
         rapport = new Rapport();
         
-        button = new Button(RaspiPin.GPIO_01, "");
+        button = new Button(RaspiPin.GPIO_21, "");
         MyObserver buttonObserver = new MyObserver(button);
         
-        backLinks = new Button(RaspiPin.GPIO_26, "left");
+        /*backLinks = new Button(RaspiPin.GPIO_26, "left");
         MyObserver button2Observer = new MyObserver(backLinks);
         
         backRechts = new Button(RaspiPin.GPIO_27, "right");
         MyObserver button3Observer = new MyObserver(backRechts);
         
         touchButton = new Button(RaspiPin.GPIO_06, "touch");
-        MyObserver touchButtonObserver = new MyObserver(touchButton);
+        MyObserver touchButtonObserver = new MyObserver(touchButton);*/
     
-        pm = new Potmeter(0b1001000, "klimaat");
+        /*pm = new Potmeter(0b1001000, "klimaat");
         Thread potmeterThread = new Thread(pm);
         potmeterThread.start();
         
         pm2 = new Potmeter(0b1001001, "volume");
         Thread potmeterThread2 = new Thread(pm2);
-        potmeterThread2.start();
+        potmeterThread2.start();*/
         
-        joystick = new JoyStick();
+        /*joystick = new JoyStick();
         Thread joystickThread = new Thread(joystick); 
-        joystickThread.start();
+        joystickThread.start();*/
     }
 
     @RequestMapping("/getRapport")

@@ -45,8 +45,8 @@ public class MyObserver implements PropertyChangeListener {
             rapport.setTemperatuurLinks((double) e.getNewValue());
         }
         
-        if (e.getPropertyName().equals("TempRechts")) {
-            rapport.setTemperatuurRechts((double) e.getNewValue());
+        if (e.getPropertyName().equals("volume")) {
+            rapport.setVolume((int) e.getNewValue());
         }
     }
     

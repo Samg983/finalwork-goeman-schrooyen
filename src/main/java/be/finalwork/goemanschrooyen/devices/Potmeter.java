@@ -102,7 +102,9 @@ public class Potmeter implements Runnable {
                     Runnable r = new TempLinksThread(potVal);
                     new Thread(r).start();
                 }               
-            } else if(this.state.equals("volume")){
+            } 
+            
+            if(this.state.equals("volume")){
                 if (MediaDao.getMediaById(1).getVolume() != potVal) {
                     System.out.println("VOLUME");
                     Runnable r2 = new VolumeThread(potVal);

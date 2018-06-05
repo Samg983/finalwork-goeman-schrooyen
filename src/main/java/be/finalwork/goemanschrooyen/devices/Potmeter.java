@@ -59,7 +59,7 @@ public class Potmeter implements Runnable {
             I2CBus i2c = I2CFactory.getInstance(I2CBus.BUS_1);
 
             //this.device = i2c.getDevice(0b1001000);
-            this.device = i2c.getDevice(0b1001000);
+            this.device = i2c.getDevice(this.adres);
             
         } catch (IOException e) {
             System.out.println(e);
@@ -77,7 +77,7 @@ public class Potmeter implements Runnable {
 //            pot = device.read(0b00000011);
 //            System.out.println(pot);
 //            Thread.slesep(100);
-            pot = device.read(this.adres);
+            pot = device.read(0b00000011);
             System.out.println(pot);
             Thread.sleep(100);
             

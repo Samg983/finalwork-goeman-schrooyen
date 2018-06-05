@@ -32,11 +32,24 @@ public class Button implements Model {
     private int counter = 0;
 
     private int touchCounter = 0;
-    
+
     private int backLeftCounter = 0;
-    
+
     private int backRightCounter = 0;
-    
+
+    //
+    private int upRechtsCounter = 0;
+
+    private int btnRechtsCounter = 0;
+
+    private int downRechtsCounter = 0;
+
+    private int upLinksCounter = 0;
+
+    private int btnLinksCounter = 0;
+
+    private int downLinksCounter = 0;
+
     private String state;
 
     private Pin pin;
@@ -59,7 +72,6 @@ public class Button implements Model {
         this.pin = pin;
     }
 
-
     public int getCounter() {
         return this.counter;
     }
@@ -81,7 +93,7 @@ public class Button implements Model {
     }
 
     public void setBackLeftCounter(int backLeftCounter) {
-       notifyListeners(this, "backLeftCounter", this.backLeftCounter, this.backLeftCounter = backLeftCounter);
+        notifyListeners(this, "backLeftCounter", this.backLeftCounter, this.backLeftCounter = backLeftCounter);
     }
 
     public int getBackRightCounter() {
@@ -89,7 +101,55 @@ public class Button implements Model {
     }
 
     public void setBackRightCounter(int backRightCounter) {
-       notifyListeners(this, "backRightCounter", this.backRightCounter, this.backRightCounter = backRightCounter);
+        notifyListeners(this, "backRightCounter", this.backRightCounter, this.backRightCounter = backRightCounter);
+    }
+
+    public int getUpRechtsCounter() {
+        return upRechtsCounter;
+    }
+
+    public void setUpRechtsCounter(int upRechtsCounter) {
+        notifyListeners(this, "upRechtsCounter", this.upRechtsCounter, this.upRechtsCounter = upRechtsCounter);
+    }
+
+    public int getBtnRechtsCounter() {
+        return btnRechtsCounter;
+    }
+
+    public void setBtnRechtsCounter(int btnRechtsCounter) {
+        notifyListeners(this, "btnRechtsCounter", this.btnRechtsCounter, this.btnRechtsCounter = btnRechtsCounter);
+    }
+
+    public int getDownRechtsCounter() {
+        return downRechtsCounter;
+    }
+
+    public void setDownRechtsCounter(int downRechtsCounter) {
+        notifyListeners(this, "downRechtsCounter", this.downRechtsCounter, this.downRechtsCounter = downRechtsCounter);
+    }
+
+    public int getUpLinksCounter() {
+        return upLinksCounter;
+    }
+
+    public void setUpLinksCounter(int upLinksCounter) {
+        notifyListeners(this, "upLinksCounter", this.upLinksCounter, this.upLinksCounter = upLinksCounter);
+    }
+
+    public int getBtnLinksCounter() {
+        return btnLinksCounter;
+    }
+
+    public void setBtnLinksCounter(int btnLinksCounter) {
+        notifyListeners(this, "btnLinksCounter", this.btnLinksCounter, this.btnLinksCounter = btnLinksCounter);
+    }
+
+    public int getDownLinksCounter() {
+        return downLinksCounter;
+    }
+
+    public void setDownLinksCounter(int downLinksCounter) {
+        notifyListeners(this, "downLinksCounter", this.downLinksCounter, this.downLinksCounter = downLinksCounter);
     }
 
     public String getState() {
@@ -99,11 +159,10 @@ public class Button implements Model {
     public void setState(String state) {
         this.state = state;
     }
-    
+
     public Button(Pin pin, String state) {
 
         this.pin = pin;
-       
 
         System.out.println("Button aangemaakt");
         // create gpio controller
@@ -122,9 +181,9 @@ public class Button implements Model {
                 // display pin state on console
                 System.out.println("Listener aangemaakt");
                 if (event.getState() == PinState.HIGH) {
-                   
-                    if(state.equals("touch")){
-                          setTouchCounter(touchCounter + 1);
+
+                    if (state.equals("touch")) {
+                        setTouchCounter(touchCounter + 1);
                     }
                 }
 
@@ -132,12 +191,41 @@ public class Button implements Model {
                     System.out.println("Pinstate LOW:" + isEmpty + ". Counter: " + counter);
                     if (state.equals("touch")) {
                         setTouchCounter(touchCounter + 1);
-                    } else if(state.equals("left")) {
+                    }
+
+                    if (state.equals("backLeft")) {
                         setBackLeftCounter(backLeftCounter + 1);
-                    } else if(state.equals("right")) {
+                    }
+
+                    if (state.equals("backRight")) {
                         setBackRightCounter(backRightCounter + 1);
-                    } else {
+                    }
+
+                    if (state.equals("home")) {
                         setCounter(counter + 1);
+                    }
+
+                    if (state.equals("upRechtsCounter")) {
+                        setUpRechtsCounter(upRechtsCounter + 1);
+                    }
+
+                    if (state.equals("btnRechtsCounter")) {
+                        setBtnRechtsCounter(btnRechtsCounter + 1);
+                    }
+
+                    if (state.equals("downRechtsCounter")) {
+                        setDownRechtsCounter(downRechtsCounter + 1);
+                    }
+
+                    if (state.equals("upLinksCounter")) {
+                        setUpLinksCounter(upLinksCounter + 1);
+                    }
+
+                    if (state.equals("btnLinksCounter")) {
+                        setBtnLinksCounter(btnLinksCounter + 1);
+                    }
+                    if (state.equals("downLinksCounter")) {
+                        setDownLinksCounter(downLinksCounter + 1);
                     }
                 }
             }

@@ -22,8 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/Rapport")
 public class RapportController {
 
-    private static Button button, button2, button3, backLinks, backRechts, touchButton;
-    private static JoyStick joystick;
+    private static Button upRechts, btnRechts, downRechts, upLinks, btnLinks, downLinks, backLeft, backRight, home, touchButton;
     private static Potmeter pm, pm2;
     public static Rapport rapport;
 
@@ -31,31 +30,46 @@ public class RapportController {
         
         rapport = new Rapport();
         
-        button = new Button(RaspiPin.GPIO_21, "");
-        MyObserver buttonObserver = new MyObserver(button);
+        upRechts = new Button(RaspiPin.GPIO_21, "upRechtsCounter");
+        MyObserver buttonObserver = new MyObserver(upRechts);
         
-        button2 = new Button(RaspiPin.GPIO_04, "");
-        MyObserver buttonObserver2 = new MyObserver(button2);
+        btnRechts = new Button(RaspiPin.GPIO_04, "btnRechtsCounter");
+        MyObserver buttonObserver2 = new MyObserver(btnRechts);
         
-        button3 = new Button(RaspiPin.GPIO_05, "");
-        MyObserver buttonObserver3 = new MyObserver(button3);
+        downRechts = new Button(RaspiPin.GPIO_05, "downRechtsCounter");
+        MyObserver buttonObserver3 = new MyObserver(downRechts);
         
-        /*backLinks = new Button(RaspiPin.GPIO_26, "left");
-        MyObserver button2Observer = new MyObserver(backLinks);
+       ////
+        upLinks = new Button(RaspiPin.GPIO_23, "upLinksCounter");
+        MyObserver buttonObserver4 = new MyObserver(upLinks);
         
-        backRechts = new Button(RaspiPin.GPIO_27, "right");
-        MyObserver button3Observer = new MyObserver(backRechts);
+        btnLinks = new Button(RaspiPin.GPIO_24, "btnLinksCounter");
+        MyObserver buttonObserver5 = new MyObserver(btnLinks);
         
+        downLinks = new Button(RaspiPin.GPIO_25, "downLinksCounter");
+        MyObserver buttonObserver6 = new MyObserver(downLinks);
+        /////
+        
+        backLeft = new Button(RaspiPin.GPIO_26, "backLeft");
+        MyObserver buttonObserver7 = new MyObserver(backLeft);
+        
+        backRight = new Button(RaspiPin.GPIO_27, "backRight");
+        MyObserver buttonObserver8 = new MyObserver(backRight);
+        
+        home = new Button(RaspiPin.GPIO_01, "home");
+        MyObserver buttonObserver9 = new MyObserver(home);
+        
+       
         touchButton = new Button(RaspiPin.GPIO_06, "touch");
-        MyObserver touchButtonObserver = new MyObserver(touchButton);*/
+        MyObserver touchButtonObserver = new MyObserver(touchButton);
     
-        /*pm = new Potmeter(0b1001000, "klimaat");
+        pm = new Potmeter(0b1001000, "klimaat");
         Thread potmeterThread = new Thread(pm);
         potmeterThread.start();
         
         pm2 = new Potmeter(0b1001001, "volume");
         Thread potmeterThread2 = new Thread(pm2);
-        potmeterThread2.start();*/
+        potmeterThread2.start();
         
         /*joystick = new JoyStick();
         Thread joystickThread = new Thread(joystick); 
@@ -69,7 +83,7 @@ public class RapportController {
     
     @RequestMapping("/setZero")
     public void setZero() {
-        rapport.setButtonCounter(0);
+        //rapport.setButtonCounter(0);
         rapport.setBackLeftCounter(0);
         rapport.setBackRightCounter(0);
         rapport.setTouchButtonCounter(0);

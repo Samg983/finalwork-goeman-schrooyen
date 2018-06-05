@@ -10,8 +10,8 @@ package be.finalwork.goemanschrooyen.rapport;
  * @author SamGoeman
  */
 public class Rapport {
-    private int buttonCounter, touchButtonCounter, backLeftCounter, backRightCounter;
-    private int xRechts, yRechts, btnRechts;
+    private int homeCounter, touchButtonCounter, backLeftCounter, backRightCounter;
+    private int upRechtsCounter, downRechtsCounter, btnRechtsCounter, upLinksCounter, downLinksCounter, btnLinksCounter;
     private double temperatuurLinks;
     private int volume;
     
@@ -19,13 +19,7 @@ public class Rapport {
         
     }
 
-    public int getButtonCounter() {
-        return buttonCounter;
-    }
-
-    public void setButtonCounter(int buttonCounter) {
-        this.buttonCounter = buttonCounter;
-    }
+  
 
     public int getTouchButtonCounter() {
         return touchButtonCounter;
@@ -35,29 +29,7 @@ public class Rapport {
         this.touchButtonCounter = touchButtonCounter;
     }
 
-    public int getxRechts() {
-        return xRechts;
-    }
-
-    public void setxRechts(int xRechts) {
-        this.xRechts = xRechts;
-    }
-
-    public int getyRechts() {
-        return yRechts;
-    }
-
-    public void setyRechts(int yRechts) {
-        this.yRechts = yRechts;
-    }
-
-    public int getBtnRechts() {
-        return btnRechts;
-    }
-
-    public void setBtnRechts(int btnRechts) {
-        this.btnRechts = btnRechts;
-    }
+   
    
 
     public double getTemperatuurLinks() {
@@ -91,8 +63,61 @@ public class Rapport {
     public void setBackRightCounter(int backRightCounter) {
         this.backRightCounter = backRightCounter;
     }
-    
-    
-    
-    
+
+    public int getHomeCounter() {
+        return homeCounter;
+    }
+
+    public void setHomeCounter(int homeCounter) {
+        this.homeCounter = homeCounter;
+    }
+
+    public int getUpRechtsCounter() {
+        return upRechtsCounter;
+    }
+
+    public void setUpRechtsCounter(int upRechtsCounter) {
+        this.upRechtsCounter = upRechtsCounter;
+    }
+
+    public int getDownRechtsCounter() {
+        return downRechtsCounter;
+    }
+
+    public void setDownRechtsCounter(int downRechtsCounter) {
+        this.downRechtsCounter = downRechtsCounter;
+    }
+
+    public int getBtnRechtsCounter() {
+        return btnRechtsCounter;
+    }
+
+    public void setBtnRechtsCounter(int btnRechtsCounter) {
+        this.btnRechtsCounter = btnRechtsCounter;
+    }
+
+    public int getUpLinksCounter() {
+        return upLinksCounter;
+    }
+
+    public void setUpLinksCounter(int upLinksCounter) {
+        this.upLinksCounter = upLinksCounter;
+    }
+
+    public int getDownLinksCounter() {
+        return downLinksCounter;
+    }
+
+    public void setDownLinksCounter(int downLinksCounter) {
+        this.downLinksCounter = downLinksCounter;
+    }
+
+    public int getBtnLinksCounter() {
+        return btnLinksCounter;
+    }
+
+    public void setBtnLinksCounter(int btnLinksCounter) {
+        this.btnLinksCounter = btnLinksCounter;
+    }
+   
 }

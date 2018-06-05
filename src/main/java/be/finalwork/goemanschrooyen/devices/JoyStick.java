@@ -73,9 +73,9 @@ public class JoyStick implements Runnable {
                 System.out.println("y: " + y);
                 System.out.println("Btn: " + btn);
 
-                rapport.setxRechts(x);
-                rapport.setyRechts(y);
-                rapport.setBtnRechts(btn);
+                //rapport.setxRechts(x);
+                //rapport.setyRechts(y);
+                //rapport.setBtnRechts(btn);
 
             } while (true);
         } catch (InterruptedException e) {

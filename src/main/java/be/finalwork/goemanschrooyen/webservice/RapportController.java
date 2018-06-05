@@ -30,7 +30,7 @@ public class RapportController {
     public RapportController() {
         rapport = new Rapport();
         
-        button = new Button(RaspiPin.GPIO_01, "");
+      /*  button = new Button(RaspiPin.GPIO_01, "");
         MyObserver buttonObserver = new MyObserver(button);
         
         backLinks = new Button(RaspiPin.GPIO_26, "left");
@@ -40,15 +40,15 @@ public class RapportController {
         MyObserver button3Observer = new MyObserver(backRechts);
         
         touchButton = new Button(RaspiPin.GPIO_06, "touch");
-        MyObserver touchButtonObserver = new MyObserver(touchButton);
+        MyObserver touchButtonObserver = new MyObserver(touchButton);*/
     
-        /*pm = new Potmeter();
+        pm = new Potmeter();
         Thread potmeterThread = new Thread(pm);
-        potmeterThread.start();*/
+        potmeterThread.start();
         
-       joystick = new JoyStick();
+       /*joystick = new JoyStick();
         Thread joystickThread = new Thread(joystick); 
-        joystickThread.start();
+        joystickThread.start();*/
     }
 
     @RequestMapping("/getRapport")

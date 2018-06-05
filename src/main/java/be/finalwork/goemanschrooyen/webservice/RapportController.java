@@ -24,7 +24,7 @@ public class RapportController {
 
     private static Button button, backLinks, backRechts, touchButton;
     private static JoyStick joystick;
-    private static Potmeter pm;
+    private static Potmeter pm, pm2;
     public static Rapport rapport;
 
     public RapportController() {
@@ -42,13 +42,17 @@ public class RapportController {
         touchButton = new Button(RaspiPin.GPIO_06, "touch");
         MyObserver touchButtonObserver = new MyObserver(touchButton);*/
     
-        pm = new Potmeter();
+        pm = new Potmeter(0b00000011);
         Thread potmeterThread = new Thread(pm);
         potmeterThread.start();
         
-        joystick = new JoyStick();
+        pm2 = new Potmeter(0b00000010);
+        Thread potmeterThread2 = new Thread(pm2);
+        potmeterThread2.start();
+        
+        /*joystick = new JoyStick();
         Thread joystickThread = new Thread(joystick); 
-        joystickThread.start();
+        joystickThread.start();*/
     }
 
     @RequestMapping("/getRapport")

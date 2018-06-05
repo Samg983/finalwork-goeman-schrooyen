@@ -40,11 +40,12 @@ public class Potmeter implements Runnable {
         this.potValue = potValue;
     }
 
-    public Potmeter() {
+    public Potmeter(int adres) {
         System.out.println("New instance potmeter");
+        this.adres = adres;
         try {
             I2CBus i2c = I2CFactory.getInstance(I2CBus.BUS_1);
-
+            
             //this.device = i2c.getDevice(0b1001000);
             this.device = i2c.getDevice(0b1001000);
             
@@ -64,9 +65,9 @@ public class Potmeter implements Runnable {
 
 //            pot = device.read(0b00000011);
 //            System.out.println(pot);
-//            Thread.sleep(100);
+//            Thread.slesep(100);
             
-             pot = device.read(0b00000011);
+             pot = device.read(this.adres);
             System.out.println(pot);
             Thread.sleep(100);
 

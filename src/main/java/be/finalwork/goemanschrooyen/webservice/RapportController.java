@@ -46,9 +46,9 @@ public class RapportController {
         Thread potmeterThread = new Thread(pm);
         potmeterThread.start();*/
         
-        /*joystick = new JoyStick();
-        Thread joystickThread = new Thread(joystick); ||
-        joystickThread.start();*/
+       joystick = new JoyStick();
+        Thread joystickThread = new Thread(joystick); 
+        joystickThread.start();
     }
 
     @RequestMapping("/getRapport")

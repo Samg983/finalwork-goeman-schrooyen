@@ -71,17 +71,17 @@ public class AutoController {
     
     @RequestMapping("/temp")
     public void temp() {
-        Potmeter pm = new Potmeter();
-
-        do {
-            if (KlimaatDao.getKlimaatById(1).getTemperatuurLinks() != pm.readValue()) {
-                System.out.println("NOT SAME");
-                Runnable r = new TempLinksThread(pm.readValue());
-                new Thread(r).start();
-            } else {
-                System.out.println("SAME");
-            }
-        } while (true);
+//        //Potmeter pm = new Potmeter();
+//
+//        do {
+//            if (KlimaatDao.getKlimaatById(1).getTemperatuurLinks() != pm.readValue()) {
+//                System.out.println("NOT SAME");
+//                Runnable r = new TempLinksThread(pm.readValue());
+//                new Thread(r).start();
+//            } else {
+//                System.out.println("SAME");
+//            }
+//        } while (true);
 
     }
 

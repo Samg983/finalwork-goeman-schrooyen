@@ -63,6 +63,7 @@ public class MediaDao {
     public static int updateMedia(Media nieuweMedia) {
         int aantalAangepasteRijen = 0;
         try {
+              System.out.println("update media dao");
             aantalAangepasteRijen = Database.voerSqlUitEnHaalAantalAangepasteRijenOp("UPDATE Media SET volume = ? WHERE mediaId = ?", new Object[]{nieuweMedia.getVolume(), nieuweMedia.getMediaId()});
         } catch (SQLException ex) {
             ex.printStackTrace();

@@ -18,7 +18,7 @@ public class Media implements Model {
     private int mediaId;
     private int volume;
     
-      private List<PropertyChangeListener> listener = new ArrayList<PropertyChangeListener>();
+    private List<PropertyChangeListener> listener = new ArrayList<PropertyChangeListener>();
 
     public int getMediaId() {
         return mediaId;

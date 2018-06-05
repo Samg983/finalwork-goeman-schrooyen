@@ -10,7 +10,7 @@ package be.finalwork.goemanschrooyen.rapport;
  * @author SamGoeman
  */
 public class Rapport {
-    private int buttonCounter, touchButtonCounter;
+    private int buttonCounter, touchButtonCounter, backLeftCounter, backRightCounter;
     private int joyStickX;
     private double temperatuurLinks, temperatuurRechts;
     
@@ -57,6 +57,24 @@ public class Rapport {
     public void setTemperatuurRechts(double temperatuurRechts) {
         this.temperatuurRechts = temperatuurRechts;
     }
+
+    public int getBackLeftCounter() {
+        return backLeftCounter;
+    }
+
+    public void setBackLeftCounter(int backLeftCounter) {
+        this.backLeftCounter = backLeftCounter;
+    }
+
+    public int getBackRightCounter() {
+        return backRightCounter;
+    }
+
+    public void setBackRightCounter(int backRightCounter) {
+        this.backRightCounter = backRightCounter;
+    }
+    
+    
     
     
 }

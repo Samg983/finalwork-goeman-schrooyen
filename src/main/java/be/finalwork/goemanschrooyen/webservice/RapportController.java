@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/Rapport")
 public class RapportController {
 
-    private static Button button, button2, button3, touchButton;
+    private static Button button, backLinks, backRechts, touchButton;
     private static JoyStick joystick;
     private static Potmeter pm;
     public static Rapport rapport;
@@ -30,16 +30,16 @@ public class RapportController {
     public RapportController() {
         rapport = new Rapport();
         
-        button = new Button(RaspiPin.GPIO_01, false);
+        button = new Button(RaspiPin.GPIO_01, "");
         MyObserver buttonObserver = new MyObserver(button);
         
-        button2 = new Button(RaspiPin.GPIO_26, false);
-        MyObserver button2Observer = new MyObserver(button2);
+        backLinks = new Button(RaspiPin.GPIO_26, "left");
+        MyObserver button2Observer = new MyObserver(backLinks);
         
-        button3 = new Button(RaspiPin.GPIO_27, false);
-        MyObserver button3Observer = new MyObserver(button3);
+        backRechts = new Button(RaspiPin.GPIO_27, "right");
+        MyObserver button3Observer = new MyObserver(backRechts);
         
-        touchButton = new Button(RaspiPin.GPIO_06, true);
+        touchButton = new Button(RaspiPin.GPIO_06, "touch");
         MyObserver touchButtonObserver = new MyObserver(touchButton);
     
         /*pm = new Potmeter();

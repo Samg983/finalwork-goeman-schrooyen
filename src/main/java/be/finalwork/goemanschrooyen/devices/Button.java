@@ -32,10 +32,14 @@ public class Button implements Model {
     private int counter = 0;
 
     private int touchCounter = 0;
+    
+    private int backLeftCounter = 0;
+    
+    private int backRightCounter = 0;
+    
+    private String state;
 
     private Pin pin;
-
-    private boolean isTouch;
 
     private List<PropertyChangeListener> listener = new ArrayList<PropertyChangeListener>();
 
@@ -55,20 +59,12 @@ public class Button implements Model {
         this.pin = pin;
     }
 
-    public boolean getIsTouch() {
-        return isTouch;
-    }
-
-    public void setIsTouch(boolean isTouch) {
-        this.isTouch = isTouch;
-    }
 
     public int getCounter() {
         return this.counter;
     }
 
     public void setCounter(int counter) {
-        System.out.println("setCounter");
         notifyListeners(this, "counterButton", this.counter, this.counter = counter);
     }
 
@@ -80,10 +76,34 @@ public class Button implements Model {
         notifyListeners(this, "touchCounterButton", this.touchCounter, this.touchCounter = touchCounter);
     }
 
-    public Button(Pin pin, boolean touch) {
+    public int getBackLeftCounter() {
+        return backLeftCounter;
+    }
+
+    public void setBackLeftCounter(int backLeftCounter) {
+       notifyListeners(this, "backLeftCounter", this.backLeftCounter, this.backLeftCounter = backLeftCounter);
+    }
+
+    public int getBackRightCounter() {
+        return backRightCounter;
+    }
+
+    public void setBackRightCounter(int backRightCounter) {
+       notifyListeners(this, "backRightCounter", this.backRightCounter, this.backRightCounter = backRightCounter);
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+    
+    public Button(Pin pin, String state) {
 
         this.pin = pin;
-        this.isTouch = touch;
+       
 
         System.out.println("Button aangemaakt");
         // create gpio controller
@@ -102,22 +122,24 @@ public class Button implements Model {
                 // display pin state on console
                 System.out.println("Listener aangemaakt");
                 if (event.getState() == PinState.HIGH) {
-                    System.out.println("Pinstate HIGH:" + isEmpty);
-                    if (touch) {
-                        System.out.println("TOUCH");
-                        setTouchCounter(touchCounter + 1);
+                   
+                    if(state.equals("touch")){
+                          setTouchCounter(touchCounter + 1);
                     }
                 }
 
                 if (event.getState() == PinState.LOW) {
                     System.out.println("Pinstate LOW:" + isEmpty + ". Counter: " + counter);
-                    if (touch) {
+                    if (state.equals("touch")) {
                         setTouchCounter(touchCounter + 1);
+                    } else if(state.equals("left")) {
+                        setBackLeftCounter(backLeftCounter + 1);
+                    } else if(state.equals("right")) {
+                        setBackRightCounter(backRightCounter + 1);
                     } else {
                         setCounter(counter + 1);
                     }
                 }
-
             }
         });
     }

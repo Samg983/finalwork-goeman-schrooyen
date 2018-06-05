@@ -33,6 +33,14 @@ public class MyObserver implements PropertyChangeListener {
             rapport.setTouchButtonCounter((int) e.getNewValue());
         } 
         
+        if (e.getPropertyName().equals("backLeftCounter")) {
+            rapport.setBackLeftCounter((int) e.getNewValue());
+        }
+        
+        if (e.getPropertyName().equals("backRightCounter")) {
+            rapport.setBackRightCounter((int) e.getNewValue());
+        }
+        
         if (e.getPropertyName().equals("TempLinks")) {
             rapport.setTemperatuurLinks((double) e.getNewValue());
         }

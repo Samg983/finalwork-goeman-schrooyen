@@ -42,9 +42,9 @@ public class RapportController {
         touchButton = new Button(RaspiPin.GPIO_06, "touch");
         MyObserver touchButtonObserver = new MyObserver(touchButton);*/
     
-        /*pm = new Potmeter();
+        pm = new Potmeter();
         Thread potmeterThread = new Thread(pm);
-        potmeterThread.start();*/
+        potmeterThread.start();
         
         joystick = new JoyStick();
         Thread joystickThread = new Thread(joystick); 

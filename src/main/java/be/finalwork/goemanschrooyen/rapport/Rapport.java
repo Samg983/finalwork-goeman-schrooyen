@@ -11,7 +11,7 @@ package be.finalwork.goemanschrooyen.rapport;
  */
 public class Rapport {
     private int buttonCounter, touchButtonCounter, backLeftCounter, backRightCounter;
-    private int joyStickX;
+    private int xRechts, yRechts, btnRechts;
     private double temperatuurLinks;
     private int volume;
     
@@ -34,14 +34,31 @@ public class Rapport {
     public void setTouchButtonCounter(int touchButtonCounter) {
         this.touchButtonCounter = touchButtonCounter;
     }
+
+    public int getxRechts() {
+        return xRechts;
+    }
+
+    public void setxRechts(int xRechts) {
+        this.xRechts = xRechts;
+    }
+
+    public int getyRechts() {
+        return yRechts;
+    }
+
+    public void setyRechts(int yRechts) {
+        this.yRechts = yRechts;
+    }
+
+    public int getBtnRechts() {
+        return btnRechts;
+    }
+
+    public void setBtnRechts(int btnRechts) {
+        this.btnRechts = btnRechts;
+    }
    
-    public int getJoyStickX(){
-        return this.joyStickX;
-    }
-    
-    public void setJoyStickX(int joyStickX){
-        this.joyStickX = joyStickX;
-    }
 
     public double getTemperatuurLinks() {
         return temperatuurLinks;

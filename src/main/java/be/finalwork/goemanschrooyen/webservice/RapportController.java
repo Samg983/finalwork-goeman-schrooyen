@@ -59,6 +59,9 @@ public class RapportController {
     @RequestMapping("/setZero")
     public void setZero() {
         rapport.setButtonCounter(0);
+        rapport.setBackLeftCounter(0);
+        rapport.setBackRightCounter(0);
+        rapport.setTouchButtonCounter(0);
     }
     
 

@@ -85,18 +85,9 @@ public class JoyStick implements Runnable {
     public JoyStick() {
         try {
             I2CBus i2c = I2CFactory.getInstance(I2CBus.BUS_1);
-            this.device = i2c.getDevice(0b1001000);
+            this.device = i2c.getDevice(0b1001001);
           
-            /*device.write((byte) 0b1100011);
-                  System.out.println("written");
-                  Thread.sleep(500);
-                   int value = device.read(0b1001000);
-                    //Thread.sleep(800);
-                    System.out.println("value: " + value);
-                    
-                    
-                    klimaat.setTemperatuur(value);
-                    KlimaatDao.updateKlimaat(klimaat);*/
+        
         } catch (IOException e) {
             System.out.println(e);
         } catch (UnsupportedBusNumberException e) {

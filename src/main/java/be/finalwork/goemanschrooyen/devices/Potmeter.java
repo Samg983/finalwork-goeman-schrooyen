@@ -47,6 +47,7 @@ public class Potmeter implements Runnable {
 
             //this.device = i2c.getDevice(0b1001000);
             this.device = i2c.getDevice(0b1001000);
+            
 
         } catch (IOException e) {
             System.out.println(e);

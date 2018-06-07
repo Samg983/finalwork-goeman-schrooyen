@@ -19,7 +19,6 @@ public class Rapport {
         
     }
 
-  
 
     public int getTouchButtonCounter() {
         return touchButtonCounter;
@@ -30,8 +29,6 @@ public class Rapport {
     }
 
    
-   
-
     public double getTemperatuurLinks() {
         return temperatuurLinks;
     }

@@ -91,7 +91,7 @@ public class RapportController {
         rapport.setUpLinksCounter(0);
         rapport.setUpRechtsCounter(0);
         rapport.setDownLinksCounter(0);
-        rapport.setUpLinksCounter(0);
+        rapport.setDownRechtsCounter(0);
         rapport.setHomeCounter(0);
     }
     

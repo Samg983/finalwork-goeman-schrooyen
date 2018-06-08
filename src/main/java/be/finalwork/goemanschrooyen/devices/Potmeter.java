@@ -70,13 +70,8 @@ public class Potmeter implements Runnable {
     }
     
     public int readValue() {
-        //System.out.println("Potmeter read value");
-        
         try {
 
-//            pot = device.read(0b00000011);
-//            System.out.println(pot);
-//            Thread.slesep(100);
             pot = device.read(0b00000011);
             System.out.println(pot);
             Thread.sleep(100);
